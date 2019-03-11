@@ -2,7 +2,7 @@
 
 # Exit the script if any command returns a non-true return value (http://www.davidpashley.com/articles/writing-robust-shell-scripts/)
 set -e
-
+#hi
 # sudo apt-get install npm nodejs-legacy
 # npm config set prefix ~
 
