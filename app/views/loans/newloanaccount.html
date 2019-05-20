@@ -179,7 +179,7 @@
                     <api-validate></api-validate>
                     <!--<h3>{{ 'label.heading.terms' | translate }}</h3>-->
                     <hr>
-                    <table ng-show="loanaccountinfo" ng-hide="previewRepayment" class=" width100">
+                    <table ng-show="loanaccountinfo" class=" width100">
                         <tr>
                             <td class="width19">
                                 <label>{{ 'label.input.principal' | translate }}&nbsp;
@@ -721,13 +721,14 @@
                     <br>
 
                     <div ng-show="loanaccountinfo">
+                        {{previewRepayment}}
                         <span>
                             <a ng-hide="previewRepayment" ng-click="previewRepayments()">{{'label.anchor.repaymentinfo' | translate}}
                                 <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </span>
                         <span>
-                            <a ng-show="previewRepayment" ng-click="previewRepayment=!previewRepayment">
+                            <a ng-show="previewRepayment" ng-click="hideRepayments()">
                                 <i class="fa fa-circle-arrow-left">{{'label.anchor.backtoloaninfo' | translate}}</i>
                             </a>
                             <br>

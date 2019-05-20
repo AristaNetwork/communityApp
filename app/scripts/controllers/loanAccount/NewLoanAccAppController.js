@@ -240,6 +240,10 @@
                 scope.collaterals.splice(index, 1);
             };
 
+            scope.hideRepayments = function () {
+                scope.previewRepayment = !scope.previewRepayment;
+            }
+
             scope.previewRepayments = function () {
                 // Make sure charges and collaterals are empty before initializing.
                 delete scope.formData.charges;
