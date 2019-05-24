@@ -195,6 +195,9 @@
                         },
                         locale:function(){
                             return scope.optlang.code;
+                        },
+                        glAccounts: function(){
+                            return scope.glAccounts;
                         }
                     }
                 });
@@ -203,16 +206,28 @@
                 });
             }
 
+            var loadGlAccounts = function(){
+                resourceFactory.clientAccountResource.get({clientId: scope.loandetails.clientId}, function (data) {
+                    scope.glAccounts = data.savingsAccounts;
+                    scope.glAccounts.forEach(element => {
+                        element.autocompleteLabel = element.accountNo + " " + element.productName;
+                    });
+                });
+            }
+
             scope.cancelLoanBonus = function(ev) {
                 openBonusDialog(false);
             }
 
-            var PayBonusCtrl = function ($scope, $uibModalInstance, resourceFactory, collect, dateFormat, locale) {
+            var PayBonusCtrl = function ($scope, $uibModalInstance, resourceFactory, collect, dateFormat, locale, glAccounts) {
                 $scope.formData = {};
+                $scope.loanBonusFormData = {};
                 $scope.formData.locale = locale;
                 $scope.formData.dateFormat = dateFormat;
+                $scope.glAccounts = glAccounts;
                 $scope.pay = function () {
                     $scope.formData.transactionDate = dateFilter($scope.formData.transactionDate, dateFormat);
+                    $scope.formData.savingsAccountId = $scope.formData.savingsAccountId.id;
                     if(collect){
                         resourceFactory.loanBonusResource.collect({loanId: routeParams.id},$scope.formData, function (data) {
                             $uibModalInstance.close(true);
@@ -223,6 +238,12 @@
                         });
                     }
                 };
+                
+
+                $scope.selectGlAccountDebit = function(){
+                    $scope.loanBonusFormData.glAccountToDebitId = $scope.loanBonusFormData.glAccountToDebit.id;
+                    $scope.loanBonusFormData.glAccountToDebit = $scope.loanBonusFormData.glAccountToDebit.accountNo;
+                }
                 $scope.cancel = function () {
                     $uibModalInstance.dismiss('cancel');
                 };
@@ -490,6 +511,8 @@
                     scope.standinginstruction = response;
                     scope.searchTransaction();
                 });
+                
+                loadGlAccounts();
             });
 
             var fetchFunction = function (offset, limit, callback) {

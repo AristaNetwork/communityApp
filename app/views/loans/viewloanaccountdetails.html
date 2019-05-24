@@ -1157,6 +1157,12 @@
         <api-validate></api-validate>
         <form ng-submit="pay()" >
             <div class="form-group">
+                <label for="debitAccount">{{'label.heading.savingaccount' | translate}}</label>
+                <input required type="text" id="debitAccount" ng-model="formData.savingsAccountId" placeholder="{{'label.input.ledger_account' | translate}}" 
+                typeahead-on-select="selectGlAccountDebit()"
+                uib-typeahead="account as account.autocompleteLabel for account in glAccounts | filter:$viewValue | limitTo:8"/>
+            </div>
+            <div class="form-group">
                 <label for="date">{{'label.heading.date' | translate}}</label>
                 <input type="text" id="date" name="date" datepicker-pop="dd MMMM yyyy" ng-model="formData.transactionDate" is-open="opened"
                                     min="closedOnDate" max="daysToCollectBonus" class="form-control" />
