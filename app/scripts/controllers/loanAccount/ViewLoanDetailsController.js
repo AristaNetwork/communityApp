@@ -267,11 +267,6 @@
                             taskPermissionName: 'CREATE_LOANCHARGE'
                         },
                         {
-                            name: "button.approve",
-                            icon: "fa fa-check",
-                            taskPermissionName: 'APPROVE_LOAN'
-                        },
-                        {
                             name: "button.modifyapplication",
                             icon: "fa fa-pincel-square-o",
                             taskPermissionName: 'UPDATE_LOAN'
@@ -314,11 +309,26 @@
                         ]
 
                     };
+
+                    console.log($rootScope.permissionList);
+                    console.log($rootScope.hasPermission("APPROVE_MEDIUM_RISK_PROFILE_CLIENT"));
+                    console.log($rootScope.hasPermission("APPROVE_HIGH_RISK_PROFILE_CLIENT"));                    
+
+                    if(
+                        data.riskProfile == "BAJO RIESGO" || 
+                        (data.riskProfile == "ALTO RIESGO" && $rootScope.hasPermission("APPROVE_HIGH_RISK_PROFILE_CLIENT")) || 
+                        (data.riskProfile == "ALTO RIESGO" && $rootScope.hasPermission("APPROVE_MEDIUM_RISK_PROFILE_CLIENT")))
+                            scope.buttons.singlebuttons.push({
+                                name: "button.approve",
+                                icon: "fa fa-check",
+                                taskPermissionName: 'APPROVE_LOAN'
+                            });
+
                     if(data.isVariableInstallmentsAllowed) {
                         scope.buttons.options.push({
                             name: "button.adjustrepaymentschedule",
                             taskPermissionName: 'ADJUST_REPAYMENT_SCHEDULE'
-                        }) ;
+                        });
                     }
                 }
 
