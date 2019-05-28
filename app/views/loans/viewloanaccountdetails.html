@@ -70,8 +70,7 @@
                 <div class="pull-right btn-group">
                     <a ng-repeat="button in buttons.singlebuttons" ng-show="button.name" ng-click="clickEvent(button.name.replace('button.',''), loandetails.id)"
                        class="btn btn-primary" has-permission='{{button.taskPermissionName}}'><i
-                            class="{{button.icon}} "></i>&nbsp;{{'label.' + button.name |
-                        translate}}</a>
+                            class="{{button.icon}} "></i>&nbsp;{{'label.' + button.name | translate}}</a>
 
                       <span ng-show="buttons.options" uib-dropdown  class="btn-group dropdown" on-toggle="toggled(open)">
                           <a class="btn btn-primary" uib-dropdown-toggle>

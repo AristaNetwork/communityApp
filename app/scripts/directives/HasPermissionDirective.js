@@ -7,15 +7,22 @@
                         throw "hasPermission value must be a string";
 
                     var value = attrs.hasPermission.trim();
-                    var notPermissionFlag = value[0] === '!';
-                    if (notPermissionFlag) {
-                        value = value.slice(1).trim();
-                    }
+                    var conditions = [value];
+                    if(value.includes("||"))
+                        conditions = value.split("||");
+                    var permissionList = [];
+
+                    conditions.forEach(function(item,index) {
+                        var hasPermission = $rootScope.hasPermission(item);
+                        var notPermissionFlag = value[0] === '!';
+                        if (notPermissionFlag)
+                            value = value.slice(1).trim();
+                        permissionList[index] = (hasPermission && !notPermissionFlag || !hasPermission && notPermissionFlag);
+
+                    });
 
                     function toggleVisibilityBasedOnPermission() {
-                        var hasPermission = $rootScope.hasPermission(value);
-
-                        if (hasPermission && !notPermissionFlag || !hasPermission && notPermissionFlag)
+                        if (permissionList.every(elem => elem == true))
                             $(element).show();
                         else
                             $(element).hide();
