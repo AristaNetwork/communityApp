@@ -220,6 +220,7 @@
 	"label.input.legalForm": "Forma legal",
 	"label.input.accno": "N.º de cuenta",
 	"label.input.activationdate": "Fecha de activación",
+	"label.input.riskProfile": "Perfil de riesgo",
 	"label.input.staff": "Personal",
 	"label.input.office": "Oficina",
 	"label.input.client": "Cliente",

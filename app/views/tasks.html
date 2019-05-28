@@ -303,9 +303,13 @@
                                             <table class="table condensed-table">
                                                 <thead>
                                                 <tr class="graybg">
-                                                    <th><input type="checkbox"
+                                                    <th>
+                                                        <input  
+                                                               type="checkbox"
                                                                ng-click="loanApprovalAllCheckBoxesClicked(office)"
-                                                               ng-checked="loanApprovalAllCheckBoxesMet(office)"/></th>
+                                                               ng-checked="loanApprovalAllCheckBoxesMet(office)"
+                                                        />
+                                                    </th>
                                                     <th>{{'label.heading.client' | translate}}</th>
                                                     <th>{{'label.heading.loan' | translate}}</th>
                                                     <th>{{'label.heading.amount' | translate}}</th>
@@ -374,8 +378,11 @@
                                 <table class="table condensed-table">
                                     <thead>
                                     <tr class="graybg">
-                                        <th><input type="checkbox" ng-click="loanDisbursalAllCheckBoxesClicked()"
-                                                   ng-checked="loanDisbursalAllCheckBoxesMet()"/></th>
+                                        <th>
+                                            <input type="checkbox" 
+                                                   ng-click="loanDisbursalAllCheckBoxesClicked()"
+                                                   ng-checked="loanDisbursalAllCheckBoxesMet()"/>
+                                        </th>
                                         <th>{{'label.heading.client' | translate}}</th>
                                         <th>{{'label.heading.loanaccountnum' | translate}}</th>
                                         <th>{{'label.heading.loanproduct' | translate}}</th>
@@ -452,7 +459,13 @@
                                     <tbody>
                                       <tr dir-paginate="loanReschedule in loanRescheduleData | filter:filterText2 | itemsPerPage: itemsPerPage"
                                           pagination-id="rescheduleLoan">
-                                      <td><input type="checkbox" data-ng-model="checkForBulkLoanRescheduleApprovalData[loanReschedule.id]"/></td>
+                                      <td>
+                                          <input 
+                                                type="checkbox" 
+                                                data-ng-model="checkForBulkLoanRescheduleApprovalData[loanReschedule.id]" 
+                                                
+                                            />
+                                        </td>
                                       <td><a href="#/viewclient/{{loanReschedule.clientId}}">{{loanReschedule.clientName}}</a></td>
                                       <td><a href="#/loans/{{loanReschedule.loanId}}/viewreschedulerequest/{{loanReschedule.id}}">{{loanReschedule.id}}</a></td>
                                       <td><a href="#/viewloanaccount/{{loanReschedule.loanId}}">{{loanReschedule.loanAccountNumber}}</a></td>
