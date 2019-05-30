@@ -564,7 +564,7 @@
                         <br>
 						<div class="col-sm-3 col-md-3">
 							<div class="thumbnail row">
-								<h4><strong>{{client.displayName}}</strong></h4>
+								<h4 class="text-center"><strong>{{client.displayName}}</strong></h4>
 								<img ng-hide="client.imagePresent" ng-src="./images/client-image-placeholder.png" alt="Avatar">
 								<img ng-show="client.imagePresent"  ng-src="{{image}}" alt="Avatar" data-ng-click="showPicture()" title="{{'label.zoom' | translate}}" >
 								<div class="btn-group-xs center">
@@ -585,6 +585,12 @@
                                 <div ng-hide="signature_url" class="show-large-picture center" data-ng-click="showWithoutSignature()"><a>{{'label.showClientSignature' | translate}}</a></div>
 								<table class="table-minified">
 									<tr>
+										<th class="table-bold">{{ 'label.input.riskProfile' | translate }}</th>
+										<td><span class="padded-td">{{ client.riskProfile }}<span
+												data-ng-hide="client.riskProfile">{{ 'label.riskProfile' | translate }}</span></span>
+										</td>
+									</tr>
+									<tr>
 										<th class="table-bold">{{ 'label.input.activationdate' | translate }}</th>
 										<td><span class="padded-td">{{client.timeline.activatedOnDate | DateFormat}}<span
 												data-ng-hide="client.timeline.activatedOnDate">{{ 'label.notactivated' | translate }}</span></span>
@@ -603,7 +609,7 @@
 									</tr>
                                     <tr>
                                         <th class="table-bold">{{ 'label.input.isStaff' | translate }}</th>
-                                        <td><span class="padded-td">{{client.isStaff}}</span>
+                                        <td><span class="padded-td"><span class="fa fa-{{ client.isStaff ? 'check' : 'times'}}"></span></span>
                                         </td>
                                     </tr>
 									<tr data-ng-show="client.mobileNo">

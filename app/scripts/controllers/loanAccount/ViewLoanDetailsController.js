@@ -1,6 +1,6 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        ViewLoanDetailsController: function (scope, routeParams, resourceFactory,paginatorService, location, route, http, $uibModal, dateFilter, API_VERSION, $sce, $rootScope) {
+        ViewLoanDetailsController: function (scope, routeParams, resourceFactory, paginatorService, location, route, http, $uibModal, dateFilter, API_VERSION, $sce, $rootScope) {
             scope.loandocuments = [];
             scope.report = false;
             scope.hidePentahoReport = true;
@@ -280,6 +280,14 @@
                 if (scope.status == "Submitted and pending approval" || scope.status == "Active" || scope.status == "Approved") {
                     scope.choice = true;
                 }
+
+                 var  approveLoanPermissionByRiskProfile = "APPROVE_LOAN"
+
+                if(data.riskProfile == "MEDIO RIESGO")
+                    approveLoanPermissionByRiskProfile+="||APPROVE_MEDIUM_RISK_PROFILE_CLIENT"
+                else if(data.riskProfile == "ALTO RIESGO")
+                    approveLoanPermissionByRiskProfile+="||APPROVE_HIGH_RISK_PROFILE_CLIENT"
+                   
                 if (data.status.value == "Submitted and pending approval") {
                     scope.buttons = { singlebuttons: [
                         {
@@ -290,7 +298,7 @@
                         {
                             name: "button.approve",
                             icon: "fa fa-check",
-                            taskPermissionName: 'APPROVE_LOAN'
+                            taskPermissionName: approveLoanPermissionByRiskProfile
                         },
                         {
                             name: "button.modifyapplication",
@@ -335,6 +343,7 @@
                         ]
 
                     };
+
                     if(data.isVariableInstallmentsAllowed) {
                         scope.buttons.options.push({
                             name: "button.adjustrepaymentschedule",
