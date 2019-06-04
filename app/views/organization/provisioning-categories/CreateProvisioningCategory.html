@@ -1,0 +1,48 @@
+<div class="content-container" ng-controller="CreateProvisioningCategoryController">
+    <ul class="breadcrumb">
+        <li><a href="#/organization">{{'label.anchor.organization' | translate}}</a></li>
+        <li><a href="#/viewallprovisioningcategories">{{'label.anchor.provisioningcategories' | translate}}</a></li>
+
+        <li class="active">{{'label.anchor.createprovisioningcategory' | translate}}</li>
+    </ul>
+    <div class="card">
+        <div class="content">
+        <form name="createprovisioningcategoryform" novalidate="" class="form-horizontal" rc-submit="submit()">
+            <api-validate></api-validate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="name">{{'label.input.provisioningcategoryname' | translate}}<span
+                            class="required">*</span></label>
+
+                    <div class="col-sm-3">
+                        <input name="name" type="text" id="name" ng-model="formData.categoryname" class="form-control"
+                               required late-Validate/>
+                    </div>
+                    <div class="col-sm-3">
+                        <form-validate valattributeform="createprovisioningcategoryform" valattribute="name"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="description">{{'label.input.provisioningcategorydescription' | translate}}</label>
+
+                    <div class="col-sm-6">
+                        <textarea rows="2" id="description" type="text" name="description" class="form-control" ng-model="formData.categorydescription"></textarea>
+                    </div>
+                    <div class="col-sm-3">
+                        <form-validate valattributeform="createprovisioningcategoryform" valattribute="description"/>
+                    </div>
+                </div>
+
+                <div class="col-md-offset-3">
+                    <a id="cancel" href="#/viewallprovisioningcategories">
+                        <button type="reset" class="btn btn-default">{{'label.button.cancel' | translate}}</button>
+                    </a>
+                    <button id="save" type="submit" ng-click="visitValidation=true" class="btn btn-primary"
+                            has-permission='CREATE_PROVISIONCATEGORY'>{{'label.button.save' | translate}}
+                    </button>
+                </div>
+            </fieldset>
+        </form>   
+        </div>
+    </div>
+</div>

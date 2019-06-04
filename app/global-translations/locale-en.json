@@ -4352,5 +4352,17 @@
   "error.msg.loan.bonus.transactiondate.exceeddaysallowed": "Bonus can't be claimed for this transaction date, it exceeds the amount of days allowed to collect the bonus",
   "error.msg.loan.bonus.transactiondate.invalid": "Transaction date can't be before loan was closed",
   "warning.loan.bonus.exceedDaysOnArrear": "Exceeds days on arrear",
-  "label.heading.paybonusloan": "Claim bonus"
+  "label.heading.paybonusloan": "Claim bonus",
+  "label.view.adminprovisioningcategories": "Define categories for Loan Provisioning",
+  "label.anchor.createprovisioningcategory": "Create Loan Provisioning Category",
+  "label.anchor.provisioningcategories": "Loan Provisioning Categories",
+  "label.button.createprovisioningcategory": "Create Provisioning Category",
+  "label.input.provisioningcategoryname": "Category Name",
+  "label.input.provisioningcategorydescription": "Category Description",
+  "label.anchor.viewprovisioningcategory": "View Loan Provisioning Category",
+  "label.heading.remove": "Remove",
+  "label.button.addprovisioningcategory": "Add Provisioning Category",
+  "label.selectprovisioningscategory": "Select provisioning category",
+  "label.heading.provisioningassetaccount": "Asset Account",
+  "label.selectassetaccount": "Select asset account"
 }

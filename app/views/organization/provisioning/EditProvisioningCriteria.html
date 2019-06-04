@@ -53,11 +53,25 @@
                         <th>{{'label.heading.minimumage' | translate}}</th>
                         <th>{{'label.heading.maximumage' | translate}}</th>
                         <th>{{'label.heading.provisioningpercentage' | translate}}</th>
-                        <th>{{'label.heading.provisioningliabilityaccount' | translate}}</th>
+                        <th ng-hide="useAssetsInsteadOfLiabilities">{{'label.heading.provisioningliabilityaccount' | translate}}</th>
+                        <th ng-show="useAssetsInsteadOfLiabilities">{{'label.heading.provisioningassetaccount' | translate}}</th>
                         <th>{{'label.heading.provisioningexpenseaccount' | translate}}</th>
+                        <th>{{'label.heading.actions' | translate}}</th>
                     </tr>
-                    <tr ng-repeat="provisioningcategory in definitions | orderBy:'categoryId'">
-                        <td>{{provisioningcategory.categoryName}}</td>
+                    <tr ng-repeat="provisioningcategory in criteriadefinitions | orderBy:'categoryId'">
+                        <td>
+                            <ng-form name="provisioningCategory{{$index}}">
+                                <select id="provisioningCategory" name="provisioningCategory"
+                                        ng-model="provisioningcategory.categoryId"
+                                        ng-options="definition.categoryId as definition.categoryName for definition in definitions"
+                                        ng-change="definitionSelected(provisioningcategory, $index)"
+                                        value="{{definition.categoryId}}" class="form-control" required>
+                                    <option value="">{{'label.selectprovisioningscategory' | translate}}</option>
+                                </select>
+                                <span class="error"
+                                        ng-show="visitValidation&&provisioningCategory{{$index}}.provisioningCategory.$error.required">{{ 'label.requirefield' | translate }}</span>
+                            </ng-form>
+                        </td>
                         <td>
                             <ng-form name="minage{{$index}}">
                                 <input id="minAge" name="minAge" class="form-control" type="text"
@@ -87,7 +101,7 @@
                         </td>
 
                         <td>
-                            <ng-form name="liabilityaccount{{$index}}">
+                            <ng-form ng-hide="useAssetsInsteadOfLiabilities" name="liabilityaccount{{$index}}">
                                 <select id="liabilitaccont" name="liabilitaccont"
                                         ng-model="provisioningcategory.liabilityAccount"
                                         ng-options="liabilitaccont.id as liabilitaccont.name for liabilitaccont in liabilityaccounts"
@@ -96,6 +110,16 @@
                                 </select>
                                 <span class="error"
                                       ng-show="visitValidation&&liabilityaccount{{$index}}.liabilitaccont.$error.required">{{ 'label.requirefield' | translate }}</span>
+                            </ng-form>
+                            <ng-form ng-show="useAssetsInsteadOfLiabilities" name="liabilityaccount{{$index}}">
+                                <select id="liabilitaccont" name="liabilitaccont"
+                                        ng-model="provisioningcategory.liabilityAccount"
+                                        ng-options="liabilitaccont.id as liabilitaccont.name for liabilitaccont in template.glAccounts | filter: {type: {code: 'accountType.asset'}}"
+                                        value="{{liabilitaccont.id}}" class="form-control" required>
+                                    <option value="">{{'label.selectassetaccount' | translate}}</option>
+                                </select>
+                                <span class="error"
+                                        ng-show="visitValidation&&liabilityaccount{{$index}}.liabilitaccont.$error.required">{{ 'label.requirefield' | translate }}</span>
                             </ng-form>
                         </td>
 
@@ -110,6 +134,14 @@
                                 <span class="error"
                                       ng-show="visitValidation&&expenseaccount{{$index}}.expenseaccount.$error.required">{{ 'label.requirefield' | translate }}</span>
                             </ng-form>
+                        </td>
+                        <td>
+                            <a data-ng-click="removeDefinition($index)" style="display: inline-block;vertical-align: middle"><i style="font-weight: bold" class="fa fa-times" title="{{'label.heading.remove' | translate}}"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a data-ng-click="addDefinition()" class="btn btn-secondary pull-left"><i class="fa fa-plus"></i>{{'label.button.addprovisioningcategory' | translate}}</a>
                         </td>
                     </tr>
                 </table>

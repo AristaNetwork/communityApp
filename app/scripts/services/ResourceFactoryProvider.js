@@ -589,6 +589,12 @@
                         post:{method:'POST',params:{}},
                         put: {method: 'PUT', params: {}}
                     }),
+                    provisioningcategory: defineResource(apiVer + "/provisioningcategory/:categoryId",{categoryId:'@categoryId'},{
+                        get: {method: 'GET',params:{}},
+                       getAll: {method: 'GET',params:{}, isArray : true},
+                       post:{method:'POST',params:{}},
+                       put: {method: 'PUT', params: {}}
+                   }),
                     provisioningentries: defineResource(apiVer + "/provisioningentries/:entryId",{entryId:'@entryId'},{
                         get: {method: 'GET',params:{}},
                         getAll: {method: 'GET',params:{}},
@@ -604,10 +610,6 @@
                     }),
                     provisioningentriesSearch: defineResource(apiVer + "/provisioningentries/entries", {}, {
                         get: {method: 'GET', params: {}}
-                    }),
-
-                    provisioningcategory: defineResource(apiVer + "/provisioningcategory", {}, {
-                        getAll: {method: 'GET', params: {}, isArray : true}
                     }),
 
                     floatingrates: defineResource(apiVer + "/floatingrates/:floatingRateId",{floatingRateId:'@floatingRateId'},{

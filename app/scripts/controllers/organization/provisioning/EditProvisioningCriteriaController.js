@@ -6,15 +6,22 @@
             scope.template = [];
             scope.formData = {};
             scope.translate = translate;
+            scope.criteriadefinitions = [];
 
             resourceFactory.provisioningcriteria.get({criteriaId: routeParams.criteriaId, template:'true'}, function (data) {
                 scope.selectedloanproducts = data.selectedLoanProducts;
                 scope.allloanproducts = data.loanProducts ;
-                scope.definitions = data.definitions;
+                scope.criteriadefinitions = scope.criteriadefinitions.concat(data.definitions);
+                scope.definitions = data.templateDefinitions;
                 scope.criteriaName = data.criteriaName;
                 scope.criteriaId = data.criteriaId;
                 scope.liabilityaccounts = data.glAccounts;
                 scope.expenseaccounts = data.glAccounts;
+            });
+
+            resourceFactory.configurationResourceByName.get({configName:'Use-Assets-instead-of-liability-accounts-for-provisioning'},function (data) {
+                if(data.enabled)
+                    scope.useAssetsInsteadOfLiabilities = true;
             });
 
             scope.addLoanProduct = function () {
@@ -46,13 +53,34 @@
                 }
             };
 
+            scope.removeDefinition = function(index){
+                scope.criteriadefinitions.splice(index,1);
+            }
+            scope.addDefinition = function(){
+                if(scope.criteriadefinitions.length !== scope.definitions.length)
+                    scope.criteriadefinitions.push({});
+            }
+            scope.definitionSelected = function(provisioningcategory, indexprovisioningcategory){
+                //console.log(indexprovisioningcategory, provisioningcategory);
+                for (let index = 0; index < scope.criteriadefinitions.length; index++) {
+                    const element = scope.criteriadefinitions[index];
+                    if(index !== indexprovisioningcategory){
+                        console.log("index " + index);
+                        if(element.categoryId === provisioningcategory.categoryId){
+                            console.log("category " + element.categoryId);
+                            provisioningcategory.categoryId = "";
+                        }
+                    }
+                }
+
+            }
 
             scope.submit = function () {
                 this.formData.locale = scope.optlang.code;
                 this.formData.criteriaId = scope.criteriaId ;
                 this.formData.criteriaName = scope.criteriaName ;
                 this.formData.loanProducts = scope.selectedloanproducts ;
-                this.formData.definitions = scope.definitions;
+                this.formData.definitions = scope.criteriadefinitions ;
                 resourceFactory.provisioningcriteria.put({criteriaId: routeParams.criteriaId}, this.formData, function (data) {
                     location.path('/viewprovisioningcriteria/' + data.resourceId);
                 });

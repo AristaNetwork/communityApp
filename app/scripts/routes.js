@@ -830,6 +830,18 @@
             .when('/loans/:loanId/previewloanrepaymentschedule/:requestId', {
                 templateUrl: 'views/loans/previewloanrepaymentschedule.html'
             })
+            .when('/viewallprovisioningcategories', {
+                templateUrl: 'views/organization/provisioning-categories/ViewAllProvisioningCategories.html'
+            })
+            .when('/createprovisioncategory', {
+                templateUrl: 'views/organization/provisioning-categories/CreateProvisioningCategory.html'
+            })
+            .when('/viewprovisioningcategory/:categoryId', {
+                templateUrl: 'views/organization/provisioning-categories/ViewProvisioningCategory.html'
+            })
+            .when('/editprovisioningcategory/:categoryId', {
+                templateUrl: 'views/organization/provisioning-categories/EditProvisioningCategory.html'
+            })
             .when('/viewallprovisionings', {
                 templateUrl: 'views/organization/provisioning/ViewAllProvisioningCriteria.html'
             })

@@ -1,0 +1,50 @@
+<div class="content-container" ng-controller="ViewProvisioningCategoryController">
+    <ul class="breadcrumb">
+        <li><a href="#/organization">{{'label.anchor.organization' | translate}}</a></li>
+        <li><a href="#/viewallprovisioningcategories">{{'label.anchor.provisioningcategories' | translate}}</a></li>
+        <li class="active">{{'label.anchor.viewprovisioningcategory' | translate}}</li>
+    </ul>
+    <div class="card">
+        <div class="content">
+        <form name="createprovisioningcategoryform" novalidate="" class="form-horizontal" rc-submit="submit()">
+            <fieldset>
+                <!-- Start -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3><strong>{{categoryname}}</strong></h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pull-right">
+                            <a href="#/editprovisioningcategory/{{categoryId}}" class="btn btn-primary" has-permission='UPDATE_PROVISIONCATEGORY'><i class="fa fa-edit "></i>&nbsp;&nbsp;{{'label.button.edit' | translate}}</a>
+                            <!--
+                            <button type="button" data-ng-click="deleteProvisionigCategory()" class="btn btn-danger" has-permission='DELETE_PROVISIONCATEGORY'><i
+                                    class="fa fa-trash-o "></i>&nbsp;&nbsp;{{'label.button.delete' | translate}}
+                            </button>
+                            -->
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <script type="text/ng-template" id="deletech.html">
+                    <div class="modal-header silver">
+                        <h3 class="bolder">{{'label.heading.delete' | translate}}</h3>
+                    </div>
+                    <div class="modal-body ">
+                        <api-validate></api-validate>
+                        <br>
+                        <button class="btn btn-default" ng-click="cancel()">{{'label.button.cancel' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="delete()">{{'label.button.confirm' | translate}}</button>
+                    </div>
+                </script>
+                <!-- end -->
+                <table class="table-bordered table view-table" style="width: 350px">
+                    <tr>
+                        <td>{{ 'label.heading.description' | translate }}</td>
+                        <td>{{categorydescription}}</td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        </div>
+    </div>
+</div>

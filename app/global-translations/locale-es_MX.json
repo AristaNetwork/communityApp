@@ -4080,5 +4080,17 @@
 	"error.msg.loan.bonus.transactiondate.exceeddaysallowed": "La bonificación no puede ser reclamada en esta fecha, excede límite",
 	"error.msg.loan.bonus.transactiondate.invalid": "No puede ser antes de la fecha de cierre del préstamo",
 	"warning.loan.bonus.exceedDaysOnArrear": "Excede días de atraso permitidos",
-  	"label.heading.paybonusloan": "Reclamar bono"
+	"label.heading.paybonusloan": "Reclamar bono",
+	"label.view.adminprovisioningcategories": "Definir las categorías para los criterios de aprovisionamiento",
+	"label.anchor.createprovisioningcategory": "Crear categorías para los criterios de aprovisionamiento",
+	"label.anchor.provisioningcategories": "Categorías de aprovisionamiento",
+	"label.button.createprovisioningcategory": "Crear categoría de aprovisionamiento",
+	"label.input.provisioningcategoryname": "Nombre de categoría",
+	"label.input.provisioningcategorydescription": "Descripción de categoría",
+	"label.anchor.viewprovisioningcategory": "Ver categoría de aprovisionamiento",
+	"label.heading.remove": "Quitar",
+	"label.button.addprovisioningcategory": "Agregar categoría de aprovisionamiento",
+	"label.selectprovisioningscategory": "Seleccione categoría de aprovisionamiento",
+	"label.heading.provisioningassetaccount": "Cuenta de activo",
+	"label.selectassetaccount": "Seleccione cuenta de activo"
 }
