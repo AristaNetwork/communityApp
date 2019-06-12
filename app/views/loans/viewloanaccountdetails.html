@@ -975,9 +975,9 @@
                                 <tbody>
                                     <tr ng-repeat="period in loandetails.repaymentSchedule.periods | limitTo: (1 - loandetails.repaymentSchedule.periods.length)" >
                                         <td scope="row">{{period.period}}</td>
-                                        <td>{{(period.interestOriginalDue + period.taxOnInterestDue) | number}}</td>
+                                        <td>{{period.interestOriginalDue | number}}</td>
                                         <td ng-repeat="tax in loandetails.taxes">{{period.interestOriginalDue * (tax.loanProductTaxComponent.percentage/100) | number}}</td>
-                                        <td>{{(period.interestPaid + period.taxOnInterestPaid) | number}}</td>
+                                        <td>{{period.interestPaid | number}}</td>
                                         <td ng-repeat="tax in loandetails.taxes">{{period.interestPaid * (tax.loanProductTaxComponent.percentage/100) | number}}</td>
                                         <td>{{period.taxOnInterestPaid | number}}</td>
                                     </tr>
