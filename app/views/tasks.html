@@ -311,6 +311,7 @@
                                                         />
                                                     </th>
                                                     <th>{{'label.heading.client' | translate}}</th>
+                                                    <th>{{'label.heading.group' | translate}}</th>
                                                     <th>{{'label.heading.loan' | translate}}</th>
                                                     <th>{{'label.heading.amount' | translate}}</th>
                                                     <th>{{'label.heading.loanpurpose' | translate}}</th>
@@ -321,6 +322,8 @@
                                                     pagination-id="'__' + $index">
                                                     <td><input type="checkbox" ng-model="loanTemplate[loan.id]"></td>
                                                     <td class="pointer"><a href='#/viewclient/{{loan.clientId}}'>{{loan.clientName}}</a>
+                                                    </td>
+                                                    <td class="pointer"><a href='#/viewgroup/{{loan.group.id}}'>{{loan.group.name}}</a>
                                                     </td>
                                                     <td class="pointer"><a href='#/viewloanaccount/{{loan.id}}'>{{loan.loanProductName}}({{loan.accountNo}})</a>
                                                     </td>
@@ -384,6 +387,7 @@
                                                    ng-checked="loanDisbursalAllCheckBoxesMet()"/>
                                         </th>
                                         <th>{{'label.heading.client' | translate}}</th>
+                                        <th>{{'label.heading.group' | translate}}</th>
                                         <th>{{'label.heading.loanaccountnum' | translate}}</th>
                                         <th>{{'label.heading.loanproduct' | translate}}</th>
                                         <th>{{'label.heading.principal' | translate}}</th>
@@ -394,6 +398,7 @@
                                         pagination-id="loan-disbursal">
                                         <td><input type="checkbox" ng-model="loanDisbursalTemplate[loan.id]"></td>
                                         <td><a href="#/viewclient/{{loan.clientId}}">{{loan.clientName}}</a></td>
+                                        <td><a href="#/viewgroup/{{loan.group.id}}">{{loan.group.name}}</a></td>
                                         <td><a href="#/viewloanaccount/{{loan.id}}">{{loan.accountNo}}</a></td>
                                         <td><a href="#/viewloanaccount/{{loan.id}}">{{loan.loanProductName}}</a></td>
                                         <td>{{loan.principal | number}}</td>
@@ -477,6 +482,142 @@
                             </div>
                             <div class="text-center">
                                 <dir-pagination-controls pagination-id="rescheduleLoan"
+                                                         boundary-links="true"
+                                                         template-url="bower_components/angular-utils-pagination/dirPagination.tpl.html"/>
+                            </div>
+                        </uib-tab>
+                        <uib-tab heading="{{'label.heading.savingsapproval' | translate}}" has-permission='APPROVE_SAVINGSACCOUNT'>
+                            <div class="head-affix">
+                                <table class="table condensed-table">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <input ng-autofocus="true" ng-model="filterText2" type="text"
+                                                   class="input-sm form-control"
+                                                   placeholder="{{'label.input.filterbyname' | translate}}">
+                                        </th>
+                                        <th>
+                                            <button type="button" class="btn btn-success"
+                                                    data-ng-click="approveBulkSavings()"
+                                                    has-permission='APPROVE_SAVINGSACCOUNT'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
+                                                | translate}}
+                                            </button>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <script type="text/ng-template" id="savingsapproval.html">
+                                <div class="modal-header silver">
+                                    <h3 class="bolder">{{'label.heading.approve' | translate}}</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <api-validate></api-validate>
+                                    <br>
+                                    <button class="btn btn-default" ng-click="cancel()">{{'label.button.cancel' |
+                                        translate}}
+                                    </button>
+                                    <button class="btn btn-primary" ng-click="approveSavings()">
+                                        {{'label.button.confirm' | translate}}
+                                    </button>
+                                </div>
+                            </script>
+                            <div>
+                                <table class="table condensed-table">
+                                    <thead>
+                                    <tr class="graybg">
+                                        <th><input type="checkbox" ng-click="checkerInboxAllCheckBoxesClickedForBulkSavingsApproval()" ng-checked="checkerInboxAllCheckBoxesMetForBulkSavingsApproval()"/></th>
+                                        <th>{{'label.heading.client' | translate}}</th>
+                                        <th>{{'label.heading.savings' | translate}}</th>
+                                        <th>{{'label.heading.accnum' | translate}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr dir-paginate="savings in savingsApprovalData | filter:filterText2 | itemsPerPage: itemsPerPage"
+                                          pagination-id="approveSavings">
+                                      <td>
+                                          <input 
+                                                type="checkbox" 
+                                                data-ng-model="checkForBulkSavingsApprovalData[savings.id]" 
+                                                
+                                            />
+                                        </td>
+                                      <td><a href="#/viewclient/{{savings.clientId}}">{{savings.clientName}}</a></td>
+                                      <td><a>{{savings.savingsProductName}}</a></td>
+                                      <td><a href="#/viewsavingaccount/{{savings.id}}">{{savings.accountNo}}</a></td>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center">
+                                <dir-pagination-controls pagination-id="approveSavings"
+                                                         boundary-links="true"
+                                                         template-url="bower_components/angular-utils-pagination/dirPagination.tpl.html"/>
+                            </div>
+                        </uib-tab>
+                        <uib-tab heading="{{'label.heading.savingsactivation' | translate}}" has-permission='ACTIVATE_SAVINGSACCOUNT'>
+                            <div class="head-affix">
+                                <table class="table condensed-table">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <input ng-autofocus="true" ng-model="filterText2" type="text"
+                                                   class="input-sm form-control"
+                                                   placeholder="{{'label.input.filterbyname' | translate}}">
+                                        </th>
+                                        <th>
+                                            <button type="button" class="btn btn-success"
+                                                    data-ng-click="activateBulkSavings()"
+                                                    has-permission='ACTIVATE_SAVINGSACCOUNT'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.activate'
+                                                | translate}}
+                                            </button>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <script type="text/ng-template" id="savingsactivation.html">
+                                <div class="modal-header silver">
+                                    <h3 class="bolder">{{'label.heading.activate' | translate}}</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <api-validate></api-validate>
+                                    <br>
+                                    <button class="btn btn-default" ng-click="cancel()">{{'label.button.cancel' |
+                                        translate}}
+                                    </button>
+                                    <button class="btn btn-primary" ng-click="activateSavings()">
+                                        {{'label.button.confirm' | translate}}
+                                    </button>
+                                </div>
+                            </script>
+                            <div>
+                                <table class="table condensed-table">
+                                    <thead>
+                                    <tr class="graybg">
+                                        <th><input type="checkbox" ng-click="checkerInboxAllCheckBoxesClickedForBulkSavingsActivation()" ng-checked="checkerInboxAllCheckBoxesMetForBulkSavingsActivation()"/></th>
+                                        <th>{{'label.heading.client' | translate}}</th>
+                                        <th>{{'label.heading.savings' | translate}}</th>
+                                        <th>{{'label.heading.accnum' | translate}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr dir-paginate="savings in savingsActivationData | filter:filterText2 | itemsPerPage: itemsPerPage"
+                                          pagination-id="activateSavings">
+                                      <td>
+                                          <input 
+                                                type="checkbox" 
+                                                data-ng-model="checkForBulkSavingsActivationData[savings.id]" 
+                                                
+                                            />
+                                        </td>
+                                      <td><a href="#/viewclient/{{savings.clientId}}">{{savings.clientName}}</a></td>
+                                      <td><a>{{savings.savingsProductName}}</a></td>
+                                      <td><a href="#/viewsavingaccount/{{savings.id}}">{{savings.accountNo}}</a></td>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center">
+                                <dir-pagination-controls pagination-id="activateSavings"
                                                          boundary-links="true"
                                                          template-url="bower_components/angular-utils-pagination/dirPagination.tpl.html"/>
                             </div>

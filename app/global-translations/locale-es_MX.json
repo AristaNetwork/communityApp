@@ -4092,5 +4092,12 @@
 	"label.button.addprovisioningcategory": "Agregar categoría de aprovisionamiento",
 	"label.selectprovisioningscategory": "Seleccione categoría de aprovisionamiento",
 	"label.heading.provisioningassetaccount": "Cuenta de activo",
-	"label.selectassetaccount": "Seleccione cuenta de activo"
+	"label.selectassetaccount": "Seleccione cuenta de activo",
+	"label.heading.savingsapproval": "Aprobación de ahorros",
+	"label.button.bulkjlgsavings": "Granel JLG Solicitud de ahorros",
+	"label.input.savingsproduct": "Producto de ahorros",
+	"label.selectsavingsproduct": "Seleccione producto de ahorros",
+	"label.heading.savingsactivation": "Activación de ahorros",
+	"label.heading.activate": "Activar",
+	"label.heading.savings": "Ahorros"
 }

@@ -4364,5 +4364,12 @@
   "label.button.addprovisioningcategory": "Add Provisioning Category",
   "label.selectprovisioningscategory": "Select provisioning category",
   "label.heading.provisioningassetaccount": "Asset Account",
-  "label.selectassetaccount": "Select asset account"
+  "label.selectassetaccount": "Select asset account",
+  "label.heading.savingsapproval": "Savings Approval",
+  "label.button.bulkjlgsavings": "Bulk JLG Savings Application",
+  "label.input.savingsproduct": "Savings Product",
+  "label.selectsavingsproduct": "Select Savings Product",
+  "label.heading.savingsactivation": "Savings Activation",
+  "label.heading.activate": "Activate",
+  "label.heading.savings": "Savings"
 }
