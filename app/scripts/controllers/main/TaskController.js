@@ -20,6 +20,8 @@
 
             scope.loanRescheduleData = [];
             scope.checkForBulkLoanRescheduleApprovalData = [];
+            scope.checkForBulkSavingsApprovalData = [];
+            scope.checkForBulkSavingsActivationData = [];
             scope.rescheduleData = function(){
               resourceFactory.loanRescheduleResource.getAll({command:'pending'}, function (data) {
                 scope.loanRescheduleData = data;
@@ -512,7 +514,7 @@
                   $uibModalInstance.close('approveLoanReschedule');
                 };
                 $scope.cancel = function () {
-                  $uibmodalInstance.dismiss('cancel');
+                  $uibModalInstance.dismiss('cancel');
                 };
               }
               scope.checkerInboxAllCheckBoxesClickedForBulkLoanRescheduleApproval = function() {                var newValue = !scope.checkerInboxAllCheckBoxesMetForBulkLoanRescheduleApproval();
@@ -566,6 +568,162 @@
                     }
                   });
                 };
+
+                resourceFactory.savingsResource.getAll({sqlSearch: 'sa.status_enum=100'}, function (data) {
+                    scope.savingsApprovalData = data.pageItems;
+                });
+
+                scope.approveBulkSavings = function () {
+                    if (scope.checkForBulkSavingsApprovalData) {
+                      $uibModal.open({
+                        templateUrl: 'savingsapproval.html',
+                        controller: ApproveBulkSavingsCtrl
+                      });
+                    }
+                  };
+      
+                    var ApproveBulkSavingsCtrl = function ($scope, $uibModalInstance) {
+                      $scope.approveSavings = function () {
+                        scope.bulkSavingsApproval();
+                        route.reload();
+                        $uibModalInstance.close('approveSavings');
+                      };
+                      $scope.cancel = function () {
+                        $uibModalInstance.dismiss('cancel');
+                      };
+                    }
+
+                scope.bulkSavingsApproval = function () {
+                    scope.formData.approvedOnDate = dateFilter(new Date(), scope.df);
+                    scope.formData.dateFormat = scope.df;
+                    scope.formData.locale = scope.optlang.code;
+                    var selectedAccounts = 0;
+                    var approvedAccounts = 0;
+                    _.each(scope.checkForBulkSavingsApprovalData, function (value, key) {
+                      if (value == true) {
+                        selectedAccounts++;
+                      }
+                    });
+                    scope.batchRequests = [];
+                    scope.requestIdentifier = "SAVINGSAPPROVAL";
+                    var reqId = 1;
+                    _.each(scope.checkForBulkSavingsApprovalData, function (value, key) {
+                      if (value == true) {
+                        var url =  "savingsaccounts/"+key+"?command=approve";
+                        var bodyData = JSON.stringify(scope.formData);
+                        var batchData = {requestId: reqId++, relativeUrl: url, method: "POST", body: bodyData};
+                        scope.batchRequests.push(batchData);
+                        }
+                      });
+                      resourceFactory.batchResource.post(scope.batchRequests, function (data) {
+                        for(var i = 0; i < data.length; i++) {
+                          if(data[i].statusCode = '200') {
+                            approvedAccounts++;
+                            data[i].body = JSON.parse(data[i].body);      scope.checkForBulkSavingsApprovalData[data[i].body.resourceId] = false;
+                          }
+                        }
+                      });
+                    };
+
+                    scope.checkerInboxAllCheckBoxesClickedForBulkSavingsApproval = function() {                
+                        var newValue = !scope.checkerInboxAllCheckBoxesMetForBulkSavingsApproval();
+                        scope.checkForBulkSavingsApprovalData = [];
+                        if(!angular.isUndefined(scope.savingsApprovalData)) {
+                          for (var i = scope.savingsApprovalData.length - 1; i >= 0; i--) {        scope.checkForBulkSavingsApprovalData[scope.savingsApprovalData[i].id] = newValue;
+                          };
+                        }
+                      }
+                      scope.checkerInboxAllCheckBoxesMetForBulkSavingsApproval = function() {
+                        var checkBoxesMet = 0;
+                        if(!angular.isUndefined(scope.savingsApprovalData)) {
+                          _.each(scope.savingsApprovalData, function(data) {
+                            if(_.has(scope.checkForBulkSavingsApprovalData, data.id)) {
+                              if(scope.checkForBulkSavingsApprovalData[data.id] == true) {
+                                checkBoxesMet++;
+                              }
+                            }
+                          });
+                          return (checkBoxesMet===scope.savingsApprovalData.length);
+                        }
+                      }
+                      
+                    resourceFactory.savingsResource.getAll({sqlSearch: 'sa.status_enum=200'}, function (data) {
+                        scope.savingsActivationData = data.pageItems;
+                    });
+    
+                    scope.activateBulkSavings = function () {
+                        if (scope.checkForBulkSavingsActivationData) {
+                          $uibModal.open({
+                            templateUrl: 'savingsactivation.html',
+                            controller: ActivateBulkSavingsCtrl
+                          });
+                        }
+                      };
+          
+                        var ActivateBulkSavingsCtrl = function ($scope, $uibModalInstance) {
+                          $scope.activateSavings = function () {
+                            scope.bulkSavingsActivation();
+                            route.reload();
+                            $uibModalInstance.close('activateSavings');
+                          };
+                          $scope.cancel = function () {
+                            $uibModalInstance.dismiss('cancel');
+                          };
+                        }
+    
+                    scope.bulkSavingsActivation = function () {
+                        scope.formData.activatedOnDate = dateFilter(new Date(), scope.df);
+                        scope.formData.dateFormat = scope.df;
+                        scope.formData.locale = scope.optlang.code;
+                        var selectedAccounts = 0;
+                        var approvedAccounts = 0;
+                        _.each(scope.checkForBulkSavingsActivationData, function (value, key) {
+                          if (value == true) {
+                            selectedAccounts++;
+                          }
+                        });
+                        scope.batchRequests = [];
+                        scope.requestIdentifier = "SAVINGSACTIVATION";
+                        var reqId = 1;
+                        _.each(scope.checkForBulkSavingsActivationData, function (value, key) {
+                          if (value == true) {
+                            var url =  "savingsaccounts/"+key+"?command=activate";
+                            var bodyData = JSON.stringify(scope.formData);
+                            var batchData = {requestId: reqId++, relativeUrl: url, method: "POST", body: bodyData};
+                            scope.batchRequests.push(batchData);
+                            }
+                          });
+                          resourceFactory.batchResource.post(scope.batchRequests, function (data) {
+                            for(var i = 0; i < data.length; i++) {
+                              if(data[i].statusCode = '200') {
+                                approvedAccounts++;
+                                data[i].body = JSON.parse(data[i].body);      scope.checkForBulkSavingsActivationData[data[i].body.resourceId] = false;
+                              }
+                            }
+                          });
+                        };
+    
+                        scope.checkerInboxAllCheckBoxesClickedForBulkSavingsActivation = function() {                
+                            var newValue = !scope.checkerInboxAllCheckBoxesMetForBulkSavingsActivation();
+                            scope.checkForBulkSavingsActivationData = [];
+                            if(!angular.isUndefined(scope.savingsActivationData)) {
+                              for (var i = scope.savingsActivationData.length - 1; i >= 0; i--) {        scope.checkForBulkSavingsActivationData[scope.savingsActivationData[i].id] = newValue;
+                              };
+                            }
+                          }
+                          scope.checkerInboxAllCheckBoxesMetForBulkSavingsActivation = function() {
+                            var checkBoxesMet = 0;
+                            if(!angular.isUndefined(scope.savingsActivationData)) {
+                              _.each(scope.savingsActivationData, function(data) {
+                                if(_.has(scope.checkForBulkSavingsActivationData, data.id)) {
+                                  if(scope.checkForBulkSavingsActivationData[data.id] == true) {
+                                    checkBoxesMet++;
+                                  }
+                                }
+                              });
+                              return (checkBoxesMet===scope.savingsActivationData.length);
+                            }
+                          }
         }
     });
     mifosX.ng.application.controller('TaskController', ['$scope', 'ResourceFactory', '$route', 'dateFilter', '$uibModal', '$location', mifosX.controllers.TaskController]).run(function ($log) {

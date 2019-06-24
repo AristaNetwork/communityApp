@@ -1,0 +1,85 @@
+<div class="content-container" ng-controller="NewJLGSavingsAppController">
+    <ul class="breadcrumb">
+        <li><a href="#/viewgroup/{{group.id}}"><strong>{{group.name}}</strong></a></li>
+        <li class="active">{{'label.anchor.bulkjlgsavings' | translate}}</li>
+    </ul>
+
+    <div class="card">
+        <div class="content">
+                <form name="newjlgsavingsform" novalidate="" class="form-inline">
+                    <api-validate></api-validate>
+                    <div class="">
+                        <label>{{ 'label.input.savingsproduct' | translate }}<span class="required">*</span>:&nbsp;</label>
+                        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.product' | translate}}"></i>
+
+                        <select id="savingsProductId" ng-model="selectedSavingsProduct.id"
+                                ng-options="saving.id as saving.name for saving in savings" value="{{savings.id}}"
+                                ng-change="savingsProductChange(selectedSavingsProduct.id)" class="form-control" required="required">
+                            <option style="display:none" value="">{{'label.selectsavingsproduct' | translate}}</option>
+                        </select>
+                    </div>
+
+                    <div class="">
+                        <div data-ng-show="productDetails" class="well">
+                            <table class="table">
+                                <tr>
+                                    <td class="width14">
+                                        <label class="control-label col-sm-2">{{ 'label.input.fieldofficer' | translate }}:&nbsp;
+                                        </label>
+                                    </td>
+                                    <td class="width36 paddedbottom20">
+                                        <select id="fieldOfficerId" ng-model="formData.fieldOfficerId" class="form-control width170px" ng-options="fieldOfficer.id as fieldOfficer.displayName for fieldOfficer in fieldOfficers"
+                                            ng-change="savingdetails.fieldOfficerName = formValue(fieldOfficers,formData.fieldOfficerId,'id','displayName')"
+                                            value="{{fieldOfficer.id}}" class="form-control">
+                                            <option value="">{{'label.selectfieldofficer' | translate}}</option>
+                                        </select>
+                                    </td>
+                                    <td><label>{{ 'label.input.submittedon' | translate }}<span class="required">*</span>:&nbsp;</label></td>
+                                    <td class="paddedbottom10">
+                                        <input type="text" id="submittedOnDate" name="submittedon" datepicker-pop="dd MMMM yyyy"
+                                               ng-model="savingApplicationCommonData.submittedOnDate" is-open="opened" class="form-control"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="" data-ng-show="productDetails">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr class="active">
+                                    <th><input type="checkbox"  ng-click="checkerInboxAllCheckBoxesClicked()" ng-checked="checkerInboxAllCheckBoxesMet()"/></th>
+                                    <th>{{'label.heading.clientid' | translate}}</th>
+                                    <th>{{'label.heading.clientname' | translate}}</th>
+                                    <th>{{'label.heading.charges' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="client in group.clientMembers" ng-init="outerIndex = $index">
+                                    <td>
+                                        <input type="checkbox" ng-model="group.clientMembers[outerIndex].isSelected" ng-click="checkerInboxAllCheckBoxesMet()">
+                                    </td>
+                                    <td>{{client.id}}</td>
+                                    <td>{{client.displayName}}</td>
+                                    <td>
+                                        <span ng-class="{'label':true,'label-primary':charge.isDeleted==false, 'label-default':charge.isDeleted}" ng-repeat="charge in client.charges" ng-init="innerIndex = $index">
+                                            {{charge.name}}
+                                            <i ng-click="toggleCharge(outerIndex, innerIndex)"
+                                            ng-class="{'fa fa-times':charge.isDeleted==false,'fa fa-plus-sign':charge.isDeleted}"
+                                            ></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                            <tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-offset-6" data-ng-show="productDetails">
+                        <button id="cancel" type="reset" class="btn btn-default" ng-click="cancel()">{{'label.button.cancel' | translate}}</button>
+                        <button id="save" type="submit" has-permission='CREATE_SAVINGSACCOUNT' class="btn btn-primary" ng-click="submit()">{{'label.button.save' | translate}}
+                        </button>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>

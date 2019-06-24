@@ -336,6 +336,7 @@
                     }),
                     savingsResource: defineResource(apiVer + "/savingsaccounts/:accountId/:resourceType/:chargeId", {accountId: '@accountId', resourceType: '@resourceType', chargeId: '@chargeId'}, {
                         get: {method: 'GET', params: {}},
+                        getAll: {method: 'GET', params: {limit: 1000, sqlSearch: '@sqlSearch'}},
                         getAllNotes: {method: 'GET', params: {}, isArray: true},
                         update: {method: 'PUT'}
                     }),

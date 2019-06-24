@@ -198,6 +198,7 @@ define(['Q', 'underscore', 'mifosX'], function (Q) {
             'savings/EditSavingAccountController',
             'savings/SavingAccountActionsController',
             'savings/ListOnHoldTransactionController',
+            'savings/NewJLGSavingsAppController',
             'accounttransfers/ViewAccountTransferDetailsController',
             'accounttransfers/MakeAccountTransferController',
             'accounttransfers/CreateStandingInstructionController',
