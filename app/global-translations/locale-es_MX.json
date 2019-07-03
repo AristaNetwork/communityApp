@@ -4099,5 +4099,6 @@
 	"label.selectsavingsproduct": "Seleccione producto de ahorros",
 	"label.heading.savingsactivation": "Activación de ahorros",
 	"label.heading.activate": "Activar",
-	"label.heading.savings": "Ahorros"
+	"label.heading.savings": "Ahorros",
+	"label.input.filterbynameorgroupname": "Filtrar por nombre o nombre de grupo"
 }

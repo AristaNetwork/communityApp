@@ -4371,5 +4371,6 @@
   "label.selectsavingsproduct": "Select Savings Product",
   "label.heading.savingsactivation": "Savings Activation",
   "label.heading.activate": "Activate",
-  "label.heading.savings": "Savings"
+  "label.heading.savings": "Savings",
+  "label.input.filterbynameorgroupname": "Filter by name or group name"
 }

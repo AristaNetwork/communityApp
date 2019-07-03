@@ -104,7 +104,7 @@
                             <ng-form ng-hide="useAssetsInsteadOfLiabilities" name="liabilityaccount{{$index}}">
                                 <select id="liabilitaccont" name="liabilitaccont"
                                         ng-model="provisioningcategory.liabilityAccount"
-                                        ng-options="liabilitaccont.id as liabilitaccont.name for liabilitaccont in liabilityaccounts"
+                                        ng-options="liabilitaccont.id as liabilitaccont.name for liabilitaccont in template.glAccounts | filter: {type: {code: 'accountType.liability'"
                                         value="{{liabilitaccont.id}}" class="form-control" required>
                                     <option value="">{{'label.selectliabilitiaccount' | translate}}</option>
                                 </select>
