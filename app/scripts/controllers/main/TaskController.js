@@ -585,7 +585,6 @@
                     var ApproveBulkSavingsCtrl = function ($scope, $uibModalInstance) {
                       $scope.approveSavings = function () {
                         scope.bulkSavingsApproval();
-                        route.reload();
                         $uibModalInstance.close('approveSavings');
                       };
                       $scope.cancel = function () {
@@ -622,6 +621,7 @@
                             data[i].body = JSON.parse(data[i].body);      scope.checkForBulkSavingsApprovalData[data[i].body.resourceId] = false;
                           }
                         }
+                        route.reload();
                       });
                     };
 
@@ -663,7 +663,7 @@
                         var ActivateBulkSavingsCtrl = function ($scope, $uibModalInstance) {
                           $scope.activateSavings = function () {
                             scope.bulkSavingsActivation();
-                            route.reload();
+                            
                             $uibModalInstance.close('activateSavings');
                           };
                           $scope.cancel = function () {
@@ -675,6 +675,7 @@
                         scope.formData.activatedOnDate = dateFilter(new Date(), scope.df);
                         scope.formData.dateFormat = scope.df;
                         scope.formData.locale = scope.optlang.code;
+                        scope.formData.makeDefault = true;
                         var selectedAccounts = 0;
                         var approvedAccounts = 0;
                         _.each(scope.checkForBulkSavingsActivationData, function (value, key) {
@@ -700,6 +701,7 @@
                                 data[i].body = JSON.parse(data[i].body);      scope.checkForBulkSavingsActivationData[data[i].body.resourceId] = false;
                               }
                             }
+                            route.reload();
                           });
                         };
     

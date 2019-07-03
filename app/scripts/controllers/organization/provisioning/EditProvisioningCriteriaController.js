@@ -9,6 +9,7 @@
             scope.criteriadefinitions = [];
 
             resourceFactory.provisioningcriteria.get({criteriaId: routeParams.criteriaId, template:'true'}, function (data) {
+                scope.template = data;
                 scope.selectedloanproducts = data.selectedLoanProducts;
                 scope.allloanproducts = data.loanProducts ;
                 scope.criteriadefinitions = scope.criteriadefinitions.concat(data.definitions);
