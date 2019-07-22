@@ -483,7 +483,7 @@
                 <tr ng-repeat="charge in loanaccountinfo.overdueCharges">
                     <td>{{charge.name}},{{charge.currency.displaySymbol}}</td>
                     <td>{{charge.chargeCalculationType.value}}</td>
-                    <td>{{charge.amount| number}}</td>
+                    <td>{{charge.amount| number : 2}}</td>
                     <td>{{charge.chargeTimeType.value}}</td>
                 </tr>
             </table>
@@ -572,26 +572,26 @@
             <td>{{period.period}}</td>
             <td>{{period.dueDate | DateFormat}}</td>
             <td>{{period.daysInPeriod}}</td>
-            <td>{{period.principalDisbursed| number}}</td>
-            <td>{{period.principalDue| number}}</td>
-            <td>{{period.principalLoanBalanceOutstanding| number}}</td>
-            <td>{{period.interestDue| number}}</td>
-            <td>{{period.feeChargesDue| number}}</td>
-            <td>{{period.penaltyChargesDue| number}}</td>
-            <td>{{period.totalDueForPeriod| number}}</td>
+            <td>{{period.principalDisbursed| number : 2}}</td>
+            <td>{{period.principalDue| number : 2}}</td>
+            <td>{{period.principalLoanBalanceOutstanding| number : 2}}</td>
+            <td>{{period.interestDue| number : 2}}</td>
+            <td>{{period.feeChargesDue| number : 2}}</td>
+            <td>{{period.penaltyChargesDue| number : 2}}</td>
+            <td>{{period.totalDueForPeriod| number : 2}}</td>
         </tr>
         </tbody>
         <tfoot class="ui-widget-header">
         <tr>
             <td colspan="2">{{'label.heading.total' | translate}}</td>
             <td>{{repaymentscheduleinfo.loanTermInDays}}</td>
-            <td>{{repaymentscheduleinfo.totalPrincipalDisbursed| number}}</td>
-            <td>{{repaymentscheduleinfo.totalPrincipalExpected| number}}</td>
+            <td>{{repaymentscheduleinfo.totalPrincipalDisbursed| number : 2}}</td>
+            <td>{{repaymentscheduleinfo.totalPrincipalExpected| number : 2}}</td>
             <td></td>
-            <td>{{repaymentscheduleinfo.totalInterestCharged| number}}</td>
-            <td>{{repaymentscheduleinfo.totalFeeChargesCharged| number}}</td>
-            <td>{{repaymentscheduleinfo.totalPenaltyChargesCharged| number}}</td>
-            <td>{{repaymentscheduleinfo.totalRepaymentExpected| number}}</td>
+            <td>{{repaymentscheduleinfo.totalInterestCharged| number : 2}}</td>
+            <td>{{repaymentscheduleinfo.totalFeeChargesCharged| number : 2}}</td>
+            <td>{{repaymentscheduleinfo.totalPenaltyChargesCharged| number : 2}}</td>
+            <td>{{repaymentscheduleinfo.totalRepaymentExpected| number : 2}}</td>
         </tr>
         </tfoot>
     </table>

@@ -185,25 +185,25 @@
 								<td class="pointer">{{result.clientAccountNo}} - {{result.clientName}}</td>
 								<td class="pointer">{{result.loanProductId}} - {{result.loanProductName}}</td>
 								<td class="pointer " >{{formatteddisbursedDate}}</td>
-								<td class="pointer justifyright">{{result.disbursementAmount | number}}</td>
+								<td class="pointer justifyright">{{result.disbursementAmount | number : 2}}</td>
 								<td class="pointer">{{formattedmaturedDate}}</td>
-								<td class="pointer justifyright">{{result.principalOutstanding | number}}</td>
-								<td class="pointer justifyright">{{result.principalRepaid | number}}</td>
-								<td class="pointer justifyright">{{result.arrearsAmount | number}}</td>
-								<td class="pointer justifyright">{{result.interestOutstanding | number}}</td>
-								<td class="pointer justifyright">{{result.interestRepaid | number}}</td>
+								<td class="pointer justifyright">{{result.principalOutstanding | number : 2}}</td>
+								<td class="pointer justifyright">{{result.principalRepaid | number : 2}}</td>
+								<td class="pointer justifyright">{{result.arrearsAmount | number : 2}}</td>
+								<td class="pointer justifyright">{{result.interestOutstanding | number : 2}}</td>
+								<td class="pointer justifyright">{{result.interestRepaid | number : 2}}</td>
 							</tr>
 							<tr class="pointer-main">
 								<td class="pointer"><strong>{{'label.heading.total' | translate}} : </strong></td>
 								<td class="pointer"></td>
 								<td class="pointer"></td>
-								<td class="pointer justifyright">{{totaldisburementAmount | number}}</td>
+								<td class="pointer justifyright">{{totaldisburementAmount | number : 2}}</td>
 								<td class="pointer"></td>
-								<td class="pointer justifyright">{{totalPrincipalOutstanding | number}}</td>
-								<td class="pointer justifyright">{{totalPrincipalRepaid | number}}</td>
-								<td class="pointer">{{totalArrearsAmount | number}}</td>
-								<td class="pointer justifyright">{{totalInterestOutstanding | number}}</td>
-								<td class="pointer justifyright">{{totalInterestRepaid | number}}</td>
+								<td class="pointer justifyright">{{totalPrincipalOutstanding | number : 2}}</td>
+								<td class="pointer justifyright">{{totalPrincipalRepaid | number : 2}}</td>
+								<td class="pointer">{{totalArrearsAmount | number : 2}}</td>
+								<td class="pointer justifyright">{{totalInterestOutstanding | number : 2}}</td>
+								<td class="pointer justifyright">{{totalInterestRepaid | number : 2}}</td>
 							</tr>
 							</tbody>
 						</table>

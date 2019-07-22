@@ -59,11 +59,11 @@
                         <table class="table table-bordered table-striped">
                             <tr>
                                 <td>{{'label.heading.approvedshares' | translate}}</td>
-                                <td>{{shareaccountdetails.summary.totalApprovedShares | number}}</td>
+                                <td>{{shareaccountdetails.summary.totalApprovedShares | number : 2}}</td>
                             </tr>
                             <tr>
                                 <td>{{'label.heading.pendingforapproval' | translate}}</td>
-                                <td>{{shareaccountdetails.summary.totalPendingForApprovalShares | number}}</td>
+                                <td>{{shareaccountdetails.summary.totalPendingForApprovalShares | number : 2}}</td>
                             </tr>
                         </table>
                     </div>
@@ -89,14 +89,14 @@
                                 <td>{{purchasedShare.purchasedDate | DateFormat}}</td>
                                 <td ng-show="purchasedShare.type.value=='Charge Payment'">{{purchasedShare.type.value}}</td>
                                 <td ng-show="!(purchasedShare.type.value=='Charge Payment')">{{purchasedShare.type.value}} ({{purchasedShare.status.value}})</td>
-                                <td>{{purchasedShare.numberOfShares | number}}</td>
+                                <td>{{purchasedShare.numberOfShares | number : 2}}</td>
                                 <td></td>
-                                <td ng-show="purchasedShare.purchasedPrice">{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.purchasedPrice | number}}</td>
+                                <td ng-show="purchasedShare.purchasedPrice">{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.purchasedPrice | number : 2}}</td>
                                 <td ng-show="!purchasedShare.purchasedPrice"></td>
                                 <td></td>
-                                <td ng-show="!(purchasedShare.type.value=='Charge Payment')">{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.chargeAmount | number}}</td>
-                                <td ng-show="purchasedShare.type.value=='Charge Payment'">{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.amount | number}}</td>
-                                <td>{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.amount | number}}</td>
+                                <td ng-show="!(purchasedShare.type.value=='Charge Payment')">{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.chargeAmount | number : 2}}</td>
+                                <td ng-show="purchasedShare.type.value=='Charge Payment'">{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.amount | number : 2}}</td>
+                                <td>{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.amount | number : 2}}</td>
                             </tr>
                         </table>
                     </uib-tab>
@@ -127,10 +127,10 @@
                                 <td class="pointer"></td>
                                 <td class="pointer">{{charge.chargeCalculationType.value}}</td>
                                 <td class="pointer"></td>
-                                <td class="pointer">{{charge.currency.displaySymbol}}{{charge.amount| number}}</td>
-                                <td class="pointer">{{charge.currency.displaySymbol}}{{charge.amountPaid| number}}</td>
-                                <td class="pointer">{{charge.currency.displaySymbol}}{{charge.amountWaived| number}}</td>
-                                <td class="pointer">{{charge.currency.displaySymbol}}{{charge.amountOutstanding| number}}</td>
+                                <td class="pointer">{{charge.currency.displaySymbol}}{{charge.amount| number : 2}}</td>
+                                <td class="pointer">{{charge.currency.displaySymbol}}{{charge.amountPaid| number : 2}}</td>
+                                <td class="pointer">{{charge.currency.displaySymbol}}{{charge.amountWaived| number : 2}}</td>
+                                <td class="pointer">{{charge.currency.displaySymbol}}{{charge.amountOutstanding| number : 2}}</td>
                                 <td class="pointer"></td>
                                 <td></td>
                             </tr>
@@ -148,7 +148,7 @@
                             </tr>
                             <tr class="pointer-main" ng-repeat="dividend in dividends">
                                 <td>{{dividend.postedDate | DateFormat}}</td>
-                                <td>{{shareaccountdetails.currency.displaySymbol}}{{dividend.amount | number}}</td>
+                                <td>{{shareaccountdetails.currency.displaySymbol}}{{dividend.amount | number : 2}}</td>
                                 <td>{{dividend.savingsTransactionId}}</td>
                                 <td>{{dividend.status.value}}</td>
                             </tr>

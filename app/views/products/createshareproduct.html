@@ -366,7 +366,7 @@
                                 <td>{{charge.name}},{{charge.currency.displaySymbol}}</td>
                                 <td>{{charge.chargeCalculationType.value}}</td>
                                 <td></td>
-                                <td>{{charge.amount|number}}</td>
+                                <td>{{charge.amount | number : 2}}</td>
                                 <td></td>
                                 <td>{{charge.chargeTimeType.value}}</td>
                                 <td></td>
@@ -513,19 +513,19 @@
                         </tr>
                         <tr>
                             <td>{{'label.heading.totalshares' | translate}}</td>
-                            <td colspan="3">{{shareproduct.totalShares|number}}</td>
+                            <td colspan="3">{{shareproduct.totalShares | number : 2}}</td>
                         </tr>
                         <tr>
                             <td>{{'label.heading.totalsharestobeissued' | translate}}</td>
-                            <td colspan="3">{{shareproduct.sharesIssued|number}}</td>
+                            <td colspan="3">{{shareproduct.sharesIssued | number : 2}}</td>
                         </tr>
                         <tr>
                             <td>{{'label.heading.sharenominalprice' | translate}}</td>
-                            <td colspan="3">{{shareproduct.unitPrice|number}}</td>
+                            <td colspan="3">{{shareproduct.unitPrice | number : 2}}</td>
                         </tr>
                         <tr>
                             <td>{{'label.heading.sharecapitalvalue' | translate}}</td>
-                            <td colspan="3">{{shareproduct.shareCapital|number}}</td>
+                            <td colspan="3">{{shareproduct.shareCapital | number : 2}}</td>
                         </tr>
                         <tr>
                             <td colspan="4"><br/></td>
@@ -536,9 +536,9 @@
 
                         <tr>
                             <td>{{'label.heading.shareperclient' | translate}}:</td>
-                            <td colspan="3">{{shareproduct.nominalShares|number}}&nbsp;&nbsp;&nbsp;(
-                                Min:{{shareproduct.minimumShares|number}}&nbsp;, Max
-                                :{{shareproduct.maximumShares|number}} )
+                            <td colspan="3">{{shareproduct.nominalShares | number : 2}}&nbsp;&nbsp;&nbsp;(
+                                Min:{{shareproduct.minimumShares | number : 2}}&nbsp;, Max
+                                :{{shareproduct.maximumShares | number : 2}} )
                             </td>
                         </tr>
 
@@ -586,7 +586,7 @@
                         <tr ng-repeat="charge in charges">
                             <td>{{charge.name}}</td>
                             <td>{{charge.chargeCalculationType.value}}</td>
-                            <td>{{charge.amount|number}}</td>
+                            <td>{{charge.amount | number : 2}}</td>
                             <td>{{charge.chargeTimeType.value}}</td>
                         </tr>
                         <tr>

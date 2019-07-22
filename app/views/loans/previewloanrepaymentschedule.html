@@ -43,23 +43,23 @@
                         <tbody>
                             <tr ng-repeat="period in data.periods">
                                 <td>{{period.dueDate | DateFormat}}</td>
-                                <td>{{period.principalDue | number}}</td>
-                                <td>{{period.principalLoanBalanceOutstanding | number}}</td>
-                                <td>{{period.interestOriginalDue | number}}</td>
-                                <td>{{period.feeChargesDue | number}}</td>
-                                <td>{{period.penaltyChargesDue | number}}</td>
-                                <td>{{period.totalOutstandingForPeriod | number}}</td>
+                                <td>{{period.principalDue | number : 2}}</td>
+                                <td>{{period.principalLoanBalanceOutstanding | number : 2}}</td>
+                                <td>{{period.interestOriginalDue | number : 2}}</td>
+                                <td>{{period.feeChargesDue | number : 2}}</td>
+                                <td>{{period.penaltyChargesDue | number : 2}}</td>
+                                <td>{{period.totalOutstandingForPeriod | number : 2}}</td>
                             </tr>
                         </tbody>
                         <tfoot class="ui-widget-header">
                             <tr>
                                 <th >{{'label.heading.total' | translate}}</th>
-                                <th>{{data.totalPrincipalExpected | number}}</th>
+                                <th>{{data.totalPrincipalExpected | number : 2}}</th>
                                 <th>&nbsp;</th>
-                                <th>{{data.totalInterestCharged | number}}</th>
-                                <th>{{data.totalFeeChargesCharged | number}}</th>
-                                <th>{{data.totalPenaltyChargesCharged | number}}</th>
-                                <th>{{data.totalRepaymentExpected | number}}</th>
+                                <th>{{data.totalInterestCharged | number : 2}}</th>
+                                <th>{{data.totalFeeChargesCharged | number : 2}}</th>
+                                <th>{{data.totalPenaltyChargesCharged | number : 2}}</th>
+                                <th>{{data.totalRepaymentExpected | number : 2}}</th>
                             </tr>
                         </tfoot>
                     </table>

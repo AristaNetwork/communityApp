@@ -26,7 +26,7 @@
             <tr class="pointer-main" ng-repeat="dividend in dividendTransactions.currentPageItems | orderBy:'name':reverse | filter:filterText">
                 <td class="pointer">{{dividend.accountData.clientName}}</td>
                 <td class="pointer">{{dividend.accountData.accountNo}}</td>
-                <td class="pointer">{{dividend.amount | number}}</td>
+                <td class="pointer">{{dividend.amount | number : 2}}</td>
                 <td class="pointer">{{dividend.status.value}}</td>
             </tr>
             </tbody>

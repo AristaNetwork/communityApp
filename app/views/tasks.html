@@ -327,7 +327,7 @@
                                                     </td>
                                                     <td class="pointer"><a href='#/viewloanaccount/{{loan.id}}'>{{loan.loanProductName}}({{loan.accountNo}})</a>
                                                     </td>
-                                                    <td class="pointer">{{loan.principal | number}}</td>
+                                                    <td class="pointer">{{loan.principal | number : 2}}</td>
                                                     <td class="pointer">{{loan.loanPurposeName}}</td>
                                                 </tr>
                                                 </tbody>
@@ -401,7 +401,7 @@
                                         <td><a href="#/viewgroup/{{loan.group.id}}">{{loan.group.name}}</a></td>
                                         <td><a href="#/viewloanaccount/{{loan.id}}">{{loan.accountNo}}</a></td>
                                         <td><a href="#/viewloanaccount/{{loan.id}}">{{loan.loanProductName}}</a></td>
-                                        <td>{{loan.principal | number}}</td>
+                                        <td>{{loan.principal | number : 2}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

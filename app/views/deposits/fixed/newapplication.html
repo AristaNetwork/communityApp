@@ -198,7 +198,7 @@
                         <td colspan="4">
                             <div class="form-inline" data-ng-show="formData.preClosurePenalApplicable">
                                 <label class="control-label">{{ 'label.checkbox.applypreclosurepenalinterest' | translate }}&nbsp;&nbsp;{{formData.preClosurePenalInterest
-                                    | number}}&nbsp;&nbsp;-&nbsp;&nbsp;On&nbsp;&nbsp;{{data.preClosurePenalInterestOnType.value}}</label>
+                                    | number : 2}}&nbsp;&nbsp;-&nbsp;&nbsp;On&nbsp;&nbsp;{{data.preClosurePenalInterestOnType.value}}</label>
                             </div>
                         </td>
                     </tr>
@@ -355,7 +355,7 @@
                                 <td>{{incentiveData.conditionType.code | translate}} </td>
                                 <td>{{incentiveData.attributeValueDesc}} </td>
                                 <td>{{incentiveData.incentiveType.code | translate}} </td>
-                                <td>{{incentiveData.amount | number}}</td>
+                                <td>{{incentiveData.amount | number : 2}}</td>
                             </tr>
                         </table>
                     </div>
