@@ -53,19 +53,19 @@ $provide.value("$locale", {
       "nov",
       "dic"
     ],
-    "fullDate": "EEEE, d 'de' MMMM 'de' y",
-    "longDate": "d 'de' MMMM 'de' y",
-    "medium": "dd/MM/yyyy HH:mm:ss",
-    "mediumDate": "dd/MM/yyyy",
-    "mediumTime": "HH:mm:ss",
-    "short": "dd/MM/yy HH:mm",
-    "shortDate": "dd/MM/yy",
-    "shortTime": "HH:mm"
+    "fullDate": "EEEE, MMMM d, y",
+    "longDate": "MMMM d, y",
+    "medium": "MMM d, y h:mm:ss a",
+    "mediumDate": "MMM d, y",
+    "mediumTime": "h:mm:ss a",
+    "short": "M/d/yy h:mm a",
+    "shortDate": "M/d/yy",
+    "shortTime": "h:mm a"
   },
   "NUMBER_FORMATS": {
-    "CURRENCY_SYM": "\u20ac",
-    "DECIMAL_SEP": ",",
-    "GROUP_SEP": ".",
+    "CURRENCY_SYM": "$",
+    "DECIMAL_SEP": ".",
+    "GROUP_SEP": ",",
     "PATTERNS": [
       {
         "gSize": 3,
