@@ -66,7 +66,7 @@
             suffix: '.json'
         });
 
-        $translateProvider.preferredLanguage('en');
+        $translateProvider.preferredLanguage('es_MX');
         $translateProvider.fallbackLanguage('en');
         //Timeout settings.
         $idleProvider.idleDuration(IDLE_DURATION); //Idle time 
