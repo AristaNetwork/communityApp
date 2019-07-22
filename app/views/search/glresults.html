@@ -181,7 +181,7 @@
                             {{shareaccount.productName}}
                         </td>
                         <td>{{shareaccount.accountNo}}</td>
-                        <td>{{shareaccount.totalApprovedShares|number}}</td>
+                        <td>{{shareaccount.totalApprovedShares | number : 2}}</td>
                         <td>{{shareaccount.status.value}}</td>
                         <td>
                             <i class="icon-stop {{shareaccount.status.code | StatusLookup}}"></i>

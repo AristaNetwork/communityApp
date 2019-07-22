@@ -237,9 +237,9 @@
 												<td class="pointer center" data-ng-click="routeToLoan(loanaccount.id)" ng-if="loanaccount.loanType.value == 'Individual'">
 								                	<i uib-tooltip="{{loanaccount.loanType.value}}" class="fa fa-user fa fa-large"></i>
 								                </td>
-								                <td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.originalLoan|number}}</td>
-								                <td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.loanBalance|number}}</td>
-								                <td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.amountPaid|number}}</td>
+								                <td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.originalLoan | number : 2}}</td>
+								                <td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.loanBalance | number : 2}}</td>
+								                <td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.amountPaid | number : 2}}</td>
 								                <td class="pointer center" data-ng-click="routeToLoan(loanaccount.id)" ng-if="loanaccount.loanType.value != 'Individual'">
 								                	<i uib-tooltip="{{loanaccount.loanType.value}}" class="fa fa-group fa fa-large"></i>
 								                </td>

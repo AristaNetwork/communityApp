@@ -406,7 +406,7 @@
                                 <td>{{charge.name}},{{charge.currency.displaySymbol}}</td>
                                 <td>{{charge.chargeCalculationType.value}}</td>
                                 <td></td>
-                                <td>{{charge.amount|number}}</td>
+                                <td>{{charge.amount | number : 2}}</td>
                                 <td></td>
                                 <td>{{charge.chargeTimeType.value}}</td>
                                 <td></td>
@@ -775,7 +775,7 @@
                         </tr>
                         <tr>
                             <td>{{'label.heading.minimumopeningbalance' | translate}}</td>
-                            <td colspan="3">{{savingproduct.minRequiredOpeningBalance|number}}</td>
+                            <td colspan="3">{{savingproduct.minRequiredOpeningBalance | number : 2}}</td>
                         </tr>
                         <tr>
                             <td>{{'label.heading.lockinPeriodFrequency' | translate}}</td>
@@ -805,7 +805,7 @@
                         </tr>
                         <tr>
                             <td>{{'label.heading.minbalanceforinterestcalculation' | translate}}</td>
-                            <td colspan="3">{{savingproduct.minBalanceForInterestCalculation|number}}</td>
+                            <td colspan="3">{{savingproduct.minBalanceForInterestCalculation | number : 2}}</td>
                         </tr>
                         <tr>
                             <td>{{'label.heading.enforceMinRequiredBalance' | translate}}</td>
@@ -813,7 +813,7 @@
                         </tr>
                         <tr>
                             <td>{{'label.heading.minRequiredBalance' | translate}}</td>
-                            <td colspan="3">{{savingproduct.minRequiredBalance|number}}</td>
+                            <td colspan="3">{{savingproduct.minRequiredBalance | number : 2}}</td>
                         </tr>
                         <tr>
                             <td>{{'label.heading.withholdtax' | translate}}</td>
@@ -854,7 +854,7 @@
                         <tr ng-repeat="charge in charges">
                             <td>{{charge.name}}</td>
                             <td>{{charge.chargeCalculationType.value}}</td>
-                            <td>{{charge.amount|number}}</td>
+                            <td>{{charge.amount | number : 2}}</td>
                             <td>{{charge.chargeTimeType.value}}</td>
                         </tr>
                         <tr>

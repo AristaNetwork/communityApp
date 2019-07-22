@@ -45,19 +45,19 @@
                     </tr>
                     <tr>
                         <td>{{'label.heading.due' | translate}}</td>
-                        <td>{{charge.amount|number}}</td>
+                        <td>{{charge.amount | number : 2}}</td>
                     </tr>
                     <tr>
                         <td>{{'label.heading.paid' | translate}}</td>
-                        <td>{{charge.amountPaid|number}}</td>
+                        <td>{{charge.amountPaid | number : 2}}</td>
                     </tr>
                     <tr>
                         <td>{{'label.heading.waived' | translate}}</td>
-                        <td>{{charge.amountWaived|number}}</td>
+                        <td>{{charge.amountWaived | number : 2}}</td>
                     </tr>
                     <tr>
                         <td>{{'label.heading.outstanding' | translate}}</td>
-                        <td>{{charge.amountOutstanding|number}}</td>
+                        <td>{{charge.amountOutstanding | number : 2}}</td>
                     </tr>
 
                 </table>

@@ -86,8 +86,8 @@
 </tr>
 <tr>
     <td>{{'label.heading.principal' | translate}}:</td>
-    <td colspan="3">{{loanproduct.principal|number}}&nbsp;&nbsp;&nbsp;( Min:{{loanproduct.minPrincipal|number}}&nbsp;, Max
-        :{{loanproduct.maxPrincipal|number}} )
+    <td colspan="3">{{loanproduct.principal | number : 2}}&nbsp;&nbsp;&nbsp;( Min:{{loanproduct.minPrincipal | number : 2}}&nbsp;, Max
+        :{{loanproduct.maxPrincipal | number : 2}} )
     </td>
 </tr>
 <tr>
@@ -204,7 +204,7 @@
 </tr>
 <tr>
     <td>{{'label.heading.arrearstolerance' | translate}}</td>
-    <td colspan="3">{{loanproduct.inArrearsTolerance|number}}</td>
+    <td colspan="3">{{loanproduct.inArrearsTolerance | number : 2}}</td>
 </tr>
 <tr>
     <td>{{'label.heading.repaymentstrategy' | translate}}</td>
@@ -423,7 +423,7 @@
 <tr ng-repeat="charge in loanproduct.charges" ng-hide="charge.penalty">
     <td>{{charge.name}}</td>
     <td>{{charge.chargeCalculationType.value}}</td>
-    <td>{{charge.amount|number}}</td>
+    <td>{{charge.amount | number : 2}}</td>
     <td>{{charge.chargeTimeType.value}}</td>
 </tr>
 <tr>
@@ -441,7 +441,7 @@
 <tr ng-repeat="charge in loanproduct.charges" ng-show="charge.penalty">
     <td>{{charge.name}}</td>
     <td>{{charge.chargeCalculationType.value}}</td>
-    <td>{{charge.amount|number}}</td>
+    <td>{{charge.amount | number : 2}}</td>
     <td>{{charge.chargeTimeType.value}}</td>
 </tr>
 <tr>
