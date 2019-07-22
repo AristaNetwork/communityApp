@@ -73,8 +73,8 @@
                 if (localStorageService.getFromLocalStorage('dateformat')) {
                     scope.dateformat = localStorageService.getFromLocalStorage('dateformat');
                 } else {
-                    localStorageService.addToLocalStorage('dateformat', 'dd MMMM yyyy');
-                    scope.dateformat = 'dd MMMM yyyy';
+                    localStorageService.addToLocalStorage('dateformat', 'dd-MM-yyyy');
+                    scope.dateformat = 'dd-MM-yyyy';
                 }
                 scope.df = scope.dateformat;
                 scope.dft = scope.dateformat + ' ' + 'HH:mm:ss'

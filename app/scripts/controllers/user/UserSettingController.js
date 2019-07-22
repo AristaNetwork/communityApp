@@ -4,10 +4,11 @@
 
             
             scope.dates = [
+                'dd-MM-yyyy',
                 'dd MMMM yyyy',
                 'dd/MMMM/yyyy',
                 'dd-MMMM-yyyy',
-                'dd-MM-yy',
+                'dd-MM-yy',                
                 'MMMM-dd-yyyy',
                 'MMMM dd yyyy',
                 'MMMM/dd/yyyy',
