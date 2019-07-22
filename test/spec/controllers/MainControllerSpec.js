@@ -48,8 +48,8 @@ describe("MainController", function () {
         });
 
         it("should set the dateformat in the scope", function () {
-            expect(this.scope.dateformat).toEqual("dd MMMM yyyy");
-            expect(this.scope.df).toEqual("dd MMMM yyyy");
+            expect(this.scope.dateformat).toEqual("dd-MM-yyyy");
+            expect(this.scope.df).toEqual("dd-MM-yyyy");
         });
     });
 
