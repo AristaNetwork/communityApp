@@ -433,7 +433,7 @@
         <tr ng-repeat="charge in charges">
             <td>{{charge.name}},{{charge.currency.displaySymbol}}</td>
             <td>{{charge.chargeCalculationType.value}}</td>
-            <td>{{charge.amount | number}}</td>
+            <td>{{charge.amount | number : 2}}</td>
             <td>{{charge.chargeTimeType.value}}</td>
             <td><a href="" ng-click="deleteCharge($index)"><i class="fa fa-times-circle fa-2x"></i></a></td>
         </tr>

@@ -1774,8 +1774,8 @@
                 </tr>
                 <tr ng-show="!loanproduct.isLinkedToFloatingInterestRates">
                     <td>{{'label.heading.nominalinterestrate' | translate}}:</td>
-                    <td colspan="3">{{loanproduct.interestRatePerPeriod | number}}&nbsp;&nbsp;&nbsp;(
-                        Min:{{loanproduct.minInterestRatePerPeriod | number}}&nbsp;, Max:{{loanproduct.maxInterestRatePerPeriod | number}})&nbsp;&nbsp;{{loanproduct.interestRateFrequencyOption.value}}
+                    <td colspan="3">{{loanproduct.interestRatePerPeriod | number : 2}}&nbsp;&nbsp;&nbsp;(
+                        Min:{{loanproduct.minInterestRatePerPeriod | number : 2}}&nbsp;, Max:{{loanproduct.maxInterestRatePerPeriod | number : 2}})&nbsp;&nbsp;{{loanproduct.interestRateFrequencyOption.value}}
                     </td>
                 </tr>
                 <tr ng-show="loanproduct.isLinkedToFloatingInterestRates">

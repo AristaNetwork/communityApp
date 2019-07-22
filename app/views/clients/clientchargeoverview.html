@@ -21,10 +21,10 @@
                         class="fa fa-stop  {{ (!(charge.isWaived || charge.isPaid)) |StatusLookup}}"></i>&nbsp;{{charge.name}}
                 </td>
                 <td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.dueDate|DateFormat}}</td>
-                <td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amount | number}}</td>
-                <td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountPaid | number}}</td>
-                <td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountWaived | number}}</td>
-                <td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountOutstanding | number}}</td>
+                <td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amount | number : 2}}</td>
+                <td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountPaid | number : 2}}</td>
+                <td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountWaived | number : 2}}</td>
+                <td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountOutstanding | number : 2}}</td>
             </tr>
         </table>
         <dir-pagination-controls boundary-links="true"

@@ -286,10 +286,10 @@
 												<i class="fa fa-stop  {{ (!(charge.isWaived || charge.isPaid)) |StatusLookup}}" ></i>&nbsp;{{charge.name}}
 											</td>
 											<td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.dueDate|DateFormat}}</td>
-											<td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amount | number}}</td>
-											<td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountPaid | number}}</td>
-											<td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountWaived | number}}</td>
-											<td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountOutstanding | number}}</td>
+											<td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amount | number : 2}}</td>
+											<td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountPaid | number : 2}}</td>
+											<td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountWaived | number : 2}}</td>
+											<td class="pointer" data-ng-click="routeToCharge(charge.id)">{{charge.amountOutstanding | number : 2}}</td>
 											<td class="pointer center">
 												<a uib-tooltip="{{'label.button.paycharge' | translate}}" has-permission='PAY_CLIENTCHARGE' ng-href="#/viewclient/{{client.id}}/paycharge/{{charge.id}}" class="btn btn-xs btn-primary ng-binding">
 													<i class="fa fa-dollar "></i>

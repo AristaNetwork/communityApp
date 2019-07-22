@@ -46,19 +46,19 @@
     </tr>
     <tr>
         <td>{{'label.heading.currencyinmultiplesof' | translate}}</td>
-        <td colspan="3">{{depositproduct.currency.inMultiplesOf | number}}</td>
+        <td colspan="3">{{depositproduct.currency.inMultiplesOf | number : 2}}</td>
     </tr>
     <tr>
         <td>{{'label.input.minDepositAmount' | translate}}</td>
-        <td colspan="3">{{depositproduct.minDepositAmount | number}}</td>
+        <td colspan="3">{{depositproduct.minDepositAmount | number : 2}}</td>
     </tr>
     <tr>
         <td>{{'label.input.default.deposit.amount' | translate}}</td>
-        <td colspan="3">{{depositproduct.depositAmount | number}}</td>
+        <td colspan="3">{{depositproduct.depositAmount | number : 2}}</td>
     </tr>
     <tr>
         <td>{{'label.input.maxDepositAmount' | translate}}</td>
-        <td colspan="3">{{depositproduct.maxDepositAmount | number}}</td>
+        <td colspan="3">{{depositproduct.maxDepositAmount | number : 2}}</td>
     </tr>
     <!--<tr>
         <td>{{'label.heading.nominalannualinterestrate' | translate}}</td>
@@ -134,7 +134,7 @@
     </tr>
     <tr ng-show="depositproduct.minBalanceForInterestCalculation">
         <td>{{'label.heading.minbalanceforinterestcalculation' | translate}}</td>
-        <td>{{depositproduct.minBalanceForInterestCalculation | number}}</td>
+        <td>{{depositproduct.minBalanceForInterestCalculation | number : 2}}</td>
     </tr>
     <tr>
         <td>{{'label.heading.withholdtax' | translate}}</td>
@@ -202,7 +202,7 @@
     <tr ng-repeat="charge in depositproduct.charges">
         <td>{{charge.name}}</td>
         <td>{{charge.chargeCalculationType.value}}</td>
-        <td>{{charge.amount | number}}</td>
+        <td>{{charge.amount | number : 2}}</td>
         <td>{{charge.chargeTimeType.value}}</td>
     </tr>
     <tr>
@@ -319,7 +319,7 @@
                     <td>{{incentiveData.conditionType.code | translate}} </td>
                     <td>{{incentiveData.attributeValueDesc}} </td>
                     <td>{{incentiveData.incentiveType.code | translate}} </td>
-                    <td>{{incentiveData.amount | number}}</td>
+                    <td>{{incentiveData.amount | number : 2}}</td>
                 </tr>
             </table>
         </div>

@@ -173,15 +173,15 @@
                                number-format/>
 
                     </td>
-                    <td ng-show="!enablePrincipal">{{period.principalDue | number}}</td>
-                    <td>{{period.principalLoanBalanceOutstanding | number}}</td>
-                    <td>{{period.interestOriginalDue | number}}</td>
+                    <td ng-show="!enablePrincipal">{{period.principalDue | number : 2}}</td>
+                    <td>{{period.principalLoanBalanceOutstanding | number : 2}}</td>
+                    <td>{{period.interestOriginalDue | number : 2}}</td>
                     <td ng-show="enableInstallment">
                         <input id="totalInstallmentAmountForPeriod" name="totalInstallmentAmountForPeriod" class="form-control"
                                type="text"
                                ng-model="period.totalInstallmentAmountForPeriod" number-format/>
                     </td>
-                    <td ng-show="!enableInstallment">{{period.totalInstallmentAmountForPeriod | number}}</td>
+                    <td ng-show="!enableInstallment">{{period.totalInstallmentAmountForPeriod | number : 2}}</td>
 
                     <td>
                         <div>
@@ -199,10 +199,10 @@
                 <tfoot class="ui-widget-header">
                 <tr>
                     <th colspan="2">{{'label.heading.total' | translate}}</th>
-                    <th>{{loandetails.repaymentSchedule.totalPrincipalExpected | number}}</th>
+                    <th>{{loandetails.repaymentSchedule.totalPrincipalExpected | number : 2}}</th>
                     <th>&nbsp;</th>
-                    <th>{{loandetails.repaymentSchedule.totalInterestCharged | number}}</th>
-                    <th>{{loandetails.repaymentSchedule.totalOutstanding | number}}</th>
+                    <th>{{loandetails.repaymentSchedule.totalInterestCharged | number : 2}}</th>
+                    <th>{{loandetails.repaymentSchedule.totalOutstanding | number : 2}}</th>
                 </tr>
                 </tfoot>
             </table>

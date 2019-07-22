@@ -325,7 +325,7 @@
 						                		{{savingaccount.accountNo}}
 							                </td>
 							                <td class="pointer" data-ng-click="routeToSaving(savingaccount.id)">{{savingaccount.productName}}</td>
-							                <td class="pointer" data-ng-click="routeToSaving(savingaccount.id)">{{savingaccount.accountBalance | number}}</td>
+							                <td class="pointer" data-ng-click="routeToSaving(savingaccount.id)">{{savingaccount.accountBalance | number : 2}}</td>
 							                <td class="pointer" ng-if="savingaccount.status.active">
 							                	<a uib-tooltip="{{'label.button.deposit' | translate}}" ng-href="#/savingaccount/{{savingaccount.id}}/deposit" class="btn btn-xs btn-primary ng-binding" ng-show="savingaccount.depositType.id == '100'">
 							                		<i class="fa fa-arrow-right "></i>

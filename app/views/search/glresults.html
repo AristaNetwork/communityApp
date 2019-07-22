@@ -100,7 +100,7 @@
                             {{savingaccount.productName}}
                         </td>
                         <td>{{savingaccount.accountNo}}</td>
-                        <td>{{savingaccount.accountBalance | number}}</td>
+                        <td>{{savingaccount.accountBalance | number : 2}}</td>
                         <td>{{savingaccount.status.value}}</td>
                         <td>
                             <i class="fa fa-stop {{savingaccount.status.code | StatusLookup}}"></i>
@@ -160,7 +160,7 @@
                             {{savingaccount.productName}}
                         </td>
                         <td>{{savingaccount.accountNo}}</td>
-                        <td>{{savingaccount.accountBalance | number}}</td>
+                        <td>{{savingaccount.accountBalance | number : 2}}</td>
                         <td>{{savingaccount.status.value}}</td>
                         <td>
                             <i class="fa fa-stop {{savingaccount.status.code | StatusLookup}}"></i>
@@ -241,7 +241,7 @@
                             {{savingaccount.productName}}
                         </td>
                         <td>{{savingaccount.accountNo}}</td>
-                        <td>{{savingaccount.accountBalance | number}}</td>
+                        <td>{{savingaccount.accountBalance | number : 2}}</td>
                         <td>{{savingaccount.status.value}}</td>
                         <td>
                             <i class="fa fa-stop {{savingaccount.status.code | StatusLookup}}"></i>

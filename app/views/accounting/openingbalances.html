@@ -58,10 +58,10 @@
                         <th>{{'label.heading.type' | translate}}</th>
                         <th>{{'label.heading.glcode' | translate}}</th>
                         <th>{{'label.heading.account' | translate}}</th>
-                        <th ng-if="totalDebitAmount > 0">{{'label.heading.debit' | translate}} : {{totalDebitAmount | number}}</th>
-                        <th ng-if="totalDebitAmount == 0">{{'label.heading.debit' | translate}} : {{ allGls | AddUpTotalFor:'amount':'entryType.value':'DEBIT'  | number}} </th>
-                        <th ng-if="totalCreditAmount > 0">{{'label.heading.credit' | translate}} : {{totalCreditAmount | number}}</th>
-                        <th ng-if="totalCreditAmount == 0">{{'label.heading.credit' | translate}} : {{ allGls | AddUpTotalFor:'amount':'entryType.value':'CREDIT'  | number}} </th>
+                        <th ng-if="totalDebitAmount > 0">{{'label.heading.debit' | translate}} : {{totalDebitAmount | number : 2}}</th>
+                        <th ng-if="totalDebitAmount == 0">{{'label.heading.debit' | translate}} : {{ allGls | AddUpTotalFor:'amount':'entryType.value':'DEBIT'  | number : 2}} </th>
+                        <th ng-if="totalCreditAmount > 0">{{'label.heading.credit' | translate}} : {{totalCreditAmount | number : 2}}</th>
+                        <th ng-if="totalCreditAmount == 0">{{'label.heading.credit' | translate}} : {{ allGls | AddUpTotalFor:'amount':'entryType.value':'CREDIT'  | number : 2}} </th>
                     </tr>
                     </thead>
                     <tbody>

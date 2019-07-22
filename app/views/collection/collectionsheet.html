@@ -227,7 +227,7 @@
 
 				    <div class="templatekeys" style="background-color:#8585FF!important"
 				         ng-repeat="loanDueTotalCollection in totalDueCollection">
-				        {{loanDueTotalCollection.dueAmount | number}}&nbsp;&nbsp;
+				        {{loanDueTotalCollection.dueAmount | number : 2}}&nbsp;&nbsp;
 				        {{loanDueTotalCollection.currencySymbol}}
 				    </div>
 				</div>

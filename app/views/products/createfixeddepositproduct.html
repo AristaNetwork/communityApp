@@ -535,7 +535,7 @@
                             <tr ng-repeat="charge in charges">
                                 <td>{{charge.name}},{{charge.currency.displaySymbol}}</td>
                                 <td>{{charge.chargeCalculationType.value}}</td>
-                                <td>{{charge.amount | number}}</td>
+                                <td>{{charge.amount | number : 2}}</td>
                                 <td>{{charge.chargeTimeType.value}}</td>
                                 <td><a href="" ng-click="deleteCharge($index)"><i class="fa fa-times-circle fa-2x"></i></a></td>
                             </tr>
@@ -826,19 +826,19 @@
                         </tr>
                         <tr>
                             <td>{{'label.heading.currencyinmultiplesof' | translate}}</td>
-                            <td colspan="3">{{depositproduct.inMultiplesOf | number}}</td>
+                            <td colspan="3">{{depositproduct.inMultiplesOf | number : 2}}</td>
                         </tr>
                         <tr>
                             <td>{{'label.input.minDepositAmount' | translate}}</td>
-                            <td colspan="3">{{depositproduct.minDepositAmount | number}}</td>
+                            <td colspan="3">{{depositproduct.minDepositAmount | number : 2}}</td>
                         </tr>
                         <tr>
                             <td>{{'label.input.default.deposit.amount' | translate}}</td>
-                            <td colspan="3">{{depositproduct.depositAmount | number}}</td>
+                            <td colspan="3">{{depositproduct.depositAmount | number : 2}}</td>
                         </tr>
                         <tr>
                             <td>{{'label.input.maxDepositAmount' | translate}}</td>
-                            <td colspan="3">{{depositproduct.maxDepositAmount | number}}</td>
+                            <td colspan="3">{{depositproduct.maxDepositAmount | number : 2}}</td>
                         </tr>
                         <!--<tr>
                             <td>{{'label.heading.nominalannualinterestrate' | translate}}</td>
@@ -897,7 +897,7 @@
                         </tr>-->
                         <tr ng-show="depositproduct.preClosurePenalInterest">
                             <td>{{'label.heading.preclosurepenalapplicable' | translate}}</td>
-                            <td>{{depositproduct.preClosurePenalInterest | number}} &nbsp; &nbsp; % &nbsp; &nbsp; On
+                            <td>{{depositproduct.preClosurePenalInterest | number : 2}} &nbsp; &nbsp; % &nbsp; &nbsp; On
                                 &nbsp;&nbsp;
                                 {{depositproduct.preClosurePenalInterestOnType.value}}
                             </td>
@@ -974,7 +974,7 @@
                         <tr ng-repeat="charge in charges">
                             <td>{{charge.name}}</td>
                             <td>{{charge.chargeCalculationType.value}}</td>
-                            <td>{{charge.amount | number}}</td>
+                            <td>{{charge.amount | number : 2}}</td>
                             <td>{{charge.chargeTimeType.value}}</td>
                         </tr>
                         <tr>

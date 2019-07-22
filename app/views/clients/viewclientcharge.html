@@ -81,7 +81,7 @@
                     <td class="pointer">{{transaction.officeName}}</td>
                     <td class="pointer">{{transaction.type.value}}</td>
                     <td class="pointer">{{transaction.date | DateFormat}}</td>
-                    <td class="pointer">{{transaction.amount | number}}</td>
+                    <td class="pointer">{{transaction.amount | number : 2}}</td>
                     <td class="pointer">
                         <a uib-tooltip="{{'label.button.delete' | translate}}" ng-if="!transaction.reversed"
                            has-permission='UNDOTRANSACTION_CLIENT' ng-click="undoTransaction(transaction.id)"

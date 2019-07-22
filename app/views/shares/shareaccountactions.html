@@ -26,9 +26,9 @@
                             </tr>
                             <tr class="pointer-main" ng-repeat="purchasedShare in purchasedShares">
                                 <td>{{purchasedShare.purchasedDate | DateFormat}}</td>
-                                <td>{{purchasedShare.numberOfShares | number}}</td>
+                                <td>{{purchasedShare.numberOfShares | number : 2}}</td>
                                 <td></td>
-                                <td>{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.purchasedPrice | number}}</td>
+                                <td>{{shareaccountdetails.currency.displaySymbol}}{{purchasedShare.purchasedPrice | number : 2}}</td>
                                 <td></td>
                                 <td><i tooltip-placement="right" uib-tooltip="{{purchasedShare.status.code}}" class="fa fa-stop {{purchasedShare.status.code | StatusLookup}}"></i>
                                 </td>
