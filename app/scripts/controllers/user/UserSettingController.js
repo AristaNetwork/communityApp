@@ -4,16 +4,7 @@
 
             
             scope.dates = [
-                'dd-MM-yyyy',
-                'dd MMMM yyyy',
-                'dd/MMMM/yyyy',
-                'dd-MMMM-yyyy',
-                'dd-MM-yy',                
-                'MMMM-dd-yyyy',
-                'MMMM dd yyyy',
-                'MMMM/dd/yyyy',
-                'MM-dd-yy',
-                'yyyy-MM-dd'
+                'dd-MM-yyyy'
             ];
 
             scope.langs = mifosX.models.Langs;
